@@ -1,0 +1,53 @@
+header {
+	min-height: 4.5rem;
+	width: 100%;
+	border-bottom: #000000 solid 2px;
+	position: fixed;
+	background: white;
+
+}
+header div {
+	display: inline-block;
+}
+
+div.nav_bar {
+	display: inline-flex;
+	height: 100%;
+	margin: 0rem 1rem;
+}
+
+.nav_item {
+	/* width: 100%; */
+	margin: 0rem 0.2rem;
+	padding: 1.5rem 1rem;
+}
+
+.login {
+	float: right;
+}
+
+.logo {
+	width: 4.2rem;
+	margin-right: 10%;
+	margin-left: 0.4rem;
+	background-image: url("../images/logo.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 4.2rem;
+	height: 4.2rem;
+	float: left;
+}
+
+/* @media only screen and (max-width: 600px) {
+	div.nav_bar {
+		display: none;
+		height: 100%;
+		margin: 0rem 1rem;
+	}
+	div.login {
+		float: right;
+		display: inline-flex;
+		height: 100%;
+		margin: 0rem 1rem;
+	}
+} */

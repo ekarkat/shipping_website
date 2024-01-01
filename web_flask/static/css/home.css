@@ -1,0 +1,35 @@
+
+.slider {
+	display: flex;
+
+}
+.slider .slider_div1 {
+	border: solid;
+	width: 100%;
+	margin: 0.5rem 0.5%;
+	width: 100%;
+	text-align: center;
+	height: 20rem;
+	margin-top: 0.5rem;
+}
+.slider .slider_div2 {
+	border: solid;
+	width: 100%;
+	margin: 0.5rem 0.5%;
+	width: 100%;
+	text-align: center;
+	height: 20rem;
+}
+
+section {
+	display: flex;
+	width: 100%;
+}
+
+section div {
+	width: 100%;
+	min-height: 25rem;
+	text-align: center;
+	margin: 0.5rem 0.5%;
+	border: solid;
+}

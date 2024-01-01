@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>index.html</title>
+<link href="{{ url_for('static', filename='css/body.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='css/header.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" type="text/css">
+{% block css %}{% endblock %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<!-- layoute contain the header and the footer
+Use : inside the body add the :
+<div class="container">
+</div> everything should be inside this main container  -->
+<body>
+	<header>
+		<div class="logo"><a href="{{ url_for('home') }}"></a></div>
+		<div class="panel">
+			<div class="login_item"><a href="{{ url_for('home') }}">Home</a></div>
+			<div class="login_item"><a href="{{ url_for('home') }}">Services</a></div>
+			<div class="login_item"><a href="{{ url_for('home') }}">Pricing</a></div>
+			<div class="login_item"><a href="{{ url_for('home') }}">About Us</a></div>
+
+		</div>
+		<div class="login">
+			<div class="login_item"><a href="{{ url_for('home') }}">Login</a></div>
+			<div class="login_item"><a href="{{ url_for('register') }}">Regiser</a></div>
+		</div>
+	</header>
+	<div class="container">{% block content %}{% endblock %}</div>
+	<footer>In progress</footer>
+</body>
+</html>

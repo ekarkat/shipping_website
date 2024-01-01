@@ -15,6 +15,7 @@ class User(BaseModel, Base):
     user_phone_number = Column(String(32), nullable=False)
     user_city = Column(String(60), nullable=False)
     user_address = Column(String(1024), nullable=False)
+    user_birth_date = Column(String(16), nullable=True)
     user_parcels = relationship("Parcel",  backref="user_parcels", cascade="all, delete")
 
     def create_parcel(self, **kwargs):

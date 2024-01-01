@@ -1,0 +1,68 @@
+header{
+	border-bottom: solid black;
+	top: 0px;
+	max-height: 70px;
+	z-index: 1;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	/* border-right: solid black; */
+	box-sizing: border-box;
+	background-color: white;
+}
+
+/* Control all the div in header */
+
+header div {
+	display: inline-block;
+	/* border: solid black; */
+	margin: 0rem 0.1rem;
+}
+
+/* Control all the direct div children in header */
+header > div {
+	max-height: 68px;
+	min-height: 68px;
+}
+
+.logo {
+	margin-right: 10%;
+	margin-left: 0.4rem;
+	background-image: url('/static/img/logo.png');
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 4.2rem;
+	float: left;
+	width: 70px;
+	height: 70px;
+	/* border: none; */
+}
+
+div.panel {
+	clear: both;
+	margin-left: 4rem;
+	display: inline-flex;
+	width: 500px;
+}
+
+.panel_item {
+	width: 100%;
+	text-align: center;
+	padding: 1.2rem 0.5rem;
+}
+
+
+
+
+div.login {
+	float: right;
+	margin-left: 4rem;
+	display: inline-flex;
+	width: 250px;
+}
+.login_item {
+	width: 100%;
+	text-align: center;
+	padding: 1.2rem 0.5rem;
+}
+

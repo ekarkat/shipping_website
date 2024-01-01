@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block css %}
+<link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet" type="text/css">
+{% endblock css %}
+
+{% block content %}
+	<div class="slider">
+		<div class="slider_div1"> this is the slider</div>
+	</div>
+
+	<section>
+		<div class="plans">first a</div>
+		<div class="plans">second</div>
+		<div class="plans">third</div>
+	</section>
+
+	<div class="slider">
+		<div class="slider_div2"> this is the slider</div>
+	</div>
+{% endblock content %}

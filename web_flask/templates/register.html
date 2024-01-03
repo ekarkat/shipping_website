@@ -5,52 +5,52 @@
 {% endblock css %}
 
 {% block content %}
-		<form class="register", method="post">
-			<div class="title">
-				<div class="main_title">Create your account</div>
-				<div class="under_title">Please enter your personal details below</details></div>
-			</div>
-			<div class="info">
-				<div class="form">
+	<form class="register", method="post">
+		<div class="title">
+			<div class="main_title">Create your account</div>
+			<div class="under_title">Please enter your personal details below</details></div>
+		</div>
+		<div class="info">
+			<div class="form">
 
-					<div class="personal_info">
-						<label for="full_name">Full name*</label>
-						<input type="text" id="full_name" name="full_name" placeholder="Enter your name" required>
-					
-						<label for="city">City*</label>
-						<input type="text" id="city" name="city" placeholder="Enter your city" required>
-		
-						<label for="address">Address*</label>
-						<input type="text" id="address" name="address" placeholder="Enter your address" required>
-		
-						<label for="phone">Phone*</label>
-						<input type="text" id="phone" name="phone" placeholder="Enter your phone">
-		
-						<label for="postal_code">Postal Code</label>
-						<input type="text" id="postal_code" name="postal_code" placeholder="Enter your postal code">
-		
-						<label for="birth_date">Birth Date</label>
-						<input type="date" id="birth_date" name="birth_date" placeholder="Enter your birth date" >
-					</div>
-					
-					<label for="email">Email</label>
-					<input type="text" id="email" name="email" placeholder="Enter your email" required>
-					
-					<label for="password">Password</label>
-					<input type="password" id="password" name="password" placeholder="Enter your password" required>
-					
-					<label for="password">Confirm Password</label>
-					<input type="password" id="password" name="password" placeholder="Confirm your password" required>
+				<div class="personal_info">
+					<label for="full_name">Full name*</label>
+					<input type="text" id="full_name" name="full_name" placeholder="Enter your name" required>
 
+					<label for="city">City*</label>
+					<input type="text" id="city" name="city" placeholder="Enter your city" required>
+
+					<label for="address">Address*</label>
+					<input type="text" id="address" name="address" placeholder="Enter your address" required>
+
+					<label for="phone">Phone*</label>
+					<input type="text" id="phone" name="phone" placeholder="Enter your phone">
+
+					<label for="postal_code">Postal Code</label>
+					<input type="text" id="postal_code" name="postal_code" placeholder="Enter your postal code">
+
+					<label for="birth_date">Birth Date</label>
+					<input type="date" id="birth_date" name="birth_date" placeholder="Enter your birth date" >
 				</div>
-			</div>
 
-			<div class="signup">
-				<input type="submit" value="Register" class="submit_b">
+				<label for="email">Email</label>
+				<input type="text" id="email" name="email" placeholder="Enter your email" required>
+
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+				<label for="password">Confirm Password</label>
+				<input type="password" id="password" name="password" placeholder="Confirm your password" required>
+
 			</div>
-			<div class="sgn_options">
-				Already have an account?
-				<a href="#">Sign in</a>
-			</div>
-		</form>
+		</div>
+
+		<div class="signup">
+			<input type="submit" value="Register" class="submit_b">
+		</div>
+		<div class="sgn_options">
+			Already have an account?
+			<a href="#">Sign in</a>
+		</div>
+	</form>
 {% endblock content %}

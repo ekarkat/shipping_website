@@ -21,9 +21,9 @@ class User(BaseModel, Base):
     def create_parcel(self, **kwargs):
         # Method for user to create a parcel
         user_details = {
-            "sender_name" : self.user_full_name,
-            "sender_phone_number" : self.user_phone_number,
-            "sender_city" : self.user_city,
+            "to_name" : self.user_full_name,
+            "to_phone_number" : self.user_phone_number,
+            "to_city" : self.user_city,
             "parcel_user_id" : self.id
             }
         details ={**user_details, **kwargs}

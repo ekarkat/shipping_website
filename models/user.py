@@ -15,15 +15,15 @@ class User(BaseModel, Base):
     user_phone_number = Column(String(32), nullable=False)
     user_city = Column(String(60), nullable=False)
     user_address = Column(String(1024), nullable=False)
-    user_birth_date = Column(String(16), nullable=True)
+    user_birth_date = Column(String(10), nullable=True)
     user_parcels = relationship("Parcel",  backref="user_parcels", cascade="all, delete")
 
     def create_parcel(self, **kwargs):
         # Method for user to create a parcel
         user_details = {
-            "to_name" : self.user_full_name,
-            "to_phone_number" : self.user_phone_number,
-            "to_city" : self.user_city,
+            "from_name" : self.user_full_name,
+            "from_phone_number" : self.user_phone_number,
+            "from_city" : self.user_city,
             "parcel_user_id" : self.id
             }
         details ={**user_details, **kwargs}

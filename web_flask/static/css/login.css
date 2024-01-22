@@ -9,7 +9,6 @@ div.container {
 } */
 
 .register {
-	margin: 2px 0 2px 0;
 	border: solid black 3px;
 	box-sizing: border-box;
 	display: inline-block;
@@ -17,6 +16,7 @@ div.container {
 	/* height: 700px; */
 	width: 60%;
 	text-align: left;
+	margin: 27vh 0;
 }
 
 
@@ -59,13 +59,12 @@ div.container {
 }
 label {
 	margin: 0 8px;
-  
 }
 input {
 	margin: 0;
 	padding: 0;
 	display: block;
-	width: 20rem;
+	width: 30vh;
 	padding: 12px 20px;
 	margin: 8px 5px;
 	box-sizing: border-box;
@@ -86,6 +85,7 @@ input {
 	text-align: center;
 	font-size: 20px;
 	cursor: pointer;
+	width: 15vh;
 }
 
 .submit_b:hover {
@@ -94,6 +94,22 @@ input {
 	border: 2px solid black;
 }
 
+.ch_rememberme {
+	float: left;
+	width: 20px;
+}
+
+.l_rememberme {
+	clear: both;
+	display: inline-block;
+	height: 30px;
+	padding-top: 6px;
+	margin-left: 0;
+}
+.rememberme {
+	margin-top: 20px;
+	margin-left: 20px;
+}
 
 .error {
 	display: block;

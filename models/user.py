@@ -5,8 +5,12 @@ from models.base_model import BaseModel, Base
 from models.parcel import Parcel
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from flask_login import UserMixin
 
-class User(BaseModel, Base):
+
+
+
+class User(BaseModel, Base, UserMixin):
     # User attribute
     __tablename__ = "users"
     user_full_name = Column(String(128), nullable=False)
@@ -16,7 +20,7 @@ class User(BaseModel, Base):
     user_city = Column(String(60), nullable=False)
     user_address = Column(String(1024), nullable=False)
     user_birth_date = Column(String(10), nullable=True)
-    user_parcels = relationship("Parcel",  backref="user_parcels", cascade="all, delete")
+    user_parcels = relationship("Parcel", backref="user_parcels", cascade="all, delete")
 
     def create_parcel(self, **kwargs):
         # Method for user to create a parcel

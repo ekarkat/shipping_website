@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block css %}
+<link href="{{ url_for('static', filename='css/account.css') }}" rel="stylesheet" type="text/css">
+{% endblock css %}
+
+{% block content %}
+<div class="user_panel">
+	<div class="side_panel">
+		<div class="pp">User profile</div>
+		<div class="create">Create a Parcel</div>
+		<div class="contact">On delivery</div>
+		<div class="history">History</div>
+		<div class="contact">Contact us</div>
+	</div>
+	<div class="main_panel"></div>
+</div>
+{% endblock content %}

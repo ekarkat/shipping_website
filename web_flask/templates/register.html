@@ -6,45 +6,89 @@
 
 {% block content %}
 	<form class="register", method="post">
+		{{ form.hidden_tag() }}
 		<div class="title">
 			<div class="main_title">Create your account</div>
 			<div class="under_title">Please enter your personal details below</details></div>
 		</div>
 		<div class="info">
 			<div class="form">
-
 				<div class="personal_info">
-					<label for="full_name">Full name*</label>
-					<input type="text" id="full_name" name="full_name" placeholder="Enter your name" required>
+					{{form.full_name.label()}}
+					{{form.full_name(placeholder="Enter your name")}}
+					{% if form.full_name.errors %}
+						{% for error in form.full_name.errors %}
+						<div class="error"> {{ error }} </div>
+						{% endfor %}
+					{% endif %}
 
-					<label for="city">City*</label>
-					<input type="text" id="city" name="city" placeholder="Enter your city" required>
+					{{form.city.label()}}
+					{{form.city(placeholder="Enter your city")}}
+					{% if form.city.errors %}
+						{% for error in form.city.errors %}
+						<div class="error"> {{ error }} </div>
+						{% endfor %}
+					{% endif %}
 
-					<label for="address">Address*</label>
-					<input type="text" id="address" name="address" placeholder="Enter your address" required>
+					{{form.address.label()}}
+					{{form.address(placeholder="Enter your address")}}
+					{% if form.address.errors %}
+						{% for error in form.address.errors %}
+						<div class="error"> {{ error }} </div>
+						{% endfor %}
+					{% endif %}
 
-					<label for="phone">Phone*</label>
-					<input type="text" id="phone" name="phone" placeholder="Enter your phone">
+					{{form.phone.label()}}
+					{{form.phone(placeholder="Enter your phone")}}
+					{% if form.phone.errors %}
+						{% for error in form.phone.errors %}
+						<div class="error"> {{ error }} </div>
+						{% endfor %}
+					{% endif %}
 
-					<label for="postal_code">Postal Code</label>
-					<input type="text" id="postal_code" name="postal_code" placeholder="Enter your postal code">
+					{{form.postal_code.label()}}
+					{{form.postal_code(placeholder="Zip code")}}
+					{% if form.postal_code.errors %}
+						{% for error in form.postal_code.errors %}
+						<div class="error"> {{ error }} </div>
+						{% endfor %}
+					{% endif %}
 
-					<label for="birth_date">Birth Date</label>
-					<input type="date" id="birth_date" name="birth_date" placeholder="Enter your birth date" >
+					{{form.birth_date.label()}}
+					{{form.birth_date()}}
+					{% if form.birth_date.errors %}
+						{% for error in form.birth_date.errors %}
+						<div class="error"> {{ error }} </div>
+						{% endfor %}
+					{% endif %}
+
+					{{form.email.label()}}
+					{{form.email(placeholder="Enter your email")}}
+					{% if form.email.errors %}
+						{% for error in form.email.errors %}
+						<div class="error"> {{ error }} </div>
+						{% endfor %}
+					{% endif %}
+
+					{{form.password.label()}}
+					{{form.password(placeholder="Enter your password")}}
+					{% if form.password.errors %}
+						{% for error in form.password.errors %}
+						<div class="error"> {{ error }} </div>
+						{% endfor %}
+					{% endif %}
+
+					{{form.confirm_password.label()}}
+					{{form.confirm_password(placeholder="Confirm your password")}}
+					{% if form.email.errors %}
+						{% for error in form.confirm_password.errors %}
+						<div class="error"> {{ error }} </div>
+						{% endfor %}
+					{% endif %}
+
 				</div>
-
-				<label for="email">Email</label>
-				<input type="text" id="email" name="email" placeholder="Enter your email" required>
-
-				<label for="password">Password</label>
-				<input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-				<label for="password">Confirm Password</label>
-				<input type="password" id="password" name="password" placeholder="Confirm your password" required>
-
 			</div>
 		</div>
-
 		<div class="signup">
 			<input type="submit" value="Register" class="submit_b">
 		</div>

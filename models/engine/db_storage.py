@@ -17,11 +17,11 @@ class DBStorage():
     def __init__(self):
         """Start engine"""
         self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}".
-										format(("root"),
-												("root"),
-												("localhost"),
-												("ship_db")),
-										pool_pre_ping=True)
+                                        format(("root"),
+                                                ("root"),
+                                                ("localhost"),
+                                                ("ship_db")),
+                                        pool_pre_ping=True)
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
@@ -34,12 +34,24 @@ class DBStorage():
                 result = self.__session.query(eval(cls)).all()
             else:
                 result = self.__session.query(cls).all()
-
         for obj in result:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             objs_dic[key] = obj
-
         return (objs_dic)
+
+    def user_eamil(self, email):
+        """Returns a user based on email"""
+        result = self.__session.query(User).filter_by(user_email=email).all()
+        if len(result) == 0:
+            return None
+        return (result[0])
+
+    def user_id(self, id):
+        """Returns a user based on email"""
+        result = self.__session.query(User).filter_by(id=id).all()
+        if len(result) == 0:
+            return None
+        return (result[0])
 
     def new(self, obj):
         """Add obj to database"""

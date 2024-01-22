@@ -26,8 +26,13 @@ Use : inside the body add the :
 
 		</div>
 		<div class="login">
-			<div class="login_item"><a href="{{ url_for('home') }}">Login</a></div>
-			<div class="login_item"><a href="{{ url_for('register') }}">Regiser</a></div>
+			{% if current_user.is_authenticated %}
+				<div class="login_item"><a href="{{ url_for('account') }}">Account</a></div>
+				<div class="login_item"><a href="{{ url_for('logout') }}">Log out</a></div>
+			{% else %}
+				<div class="login_item"><a href="{{ url_for('login') }}">Login</a></div>
+				<div class="login_item"><a href="{{ url_for('register') }}">Regiser</a></div>
+			{% endif %}
 		</div>
 	</header>
 	<div class="container">{% block content %}{% endblock %}</div>

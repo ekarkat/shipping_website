@@ -1,0 +1,30 @@
+#!/usr/bin/python3
+"""Registarion form rout"""
+
+from flask import render_template, url_for, request, redirect
+from web_flask import app, bycpt
+from web_flask.forms import LoginForm
+from flask_login import login_user, logout_user
+
+
+@app.route("/login/", methods=["GET", "POST"])
+def login():
+
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        from models import storage
+        user = storage.user_eamil(form.email.data)
+        if user and bycpt.check_password_hash(user.user_password, form.password.data):
+            login_user(user)
+            return render_template("home.html")
+
+        return render_template("login.html", form=form)
+
+    return render_template("login.html", form=form)
+
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))

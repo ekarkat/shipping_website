@@ -4,41 +4,47 @@ div.container {
 	border: none;
 }
 
-/* footer {
-	position: absolute;
-} */
+.first {
 
-.register {
-	border: solid black 3px;
+	display: flex;
+	align-items: stretch;
+	/* justify-content: center; */
+	height: 48rem;
+	width: 100%;
 	box-sizing: border-box;
-	display: inline-block;
-
-	/* height: 700px; */
-	width: 60%;
-	text-align: left;
-	margin: 27vh 0;
 }
 
+.login_form {
+	/* border: solid rgb(215,68,59) 3px; */
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+
+	/* height: 700px; */
+	width: 40%;
+	/* text-align: left; */
+	/* margin: 27vh 0; */
+	flex-wrap: wrap;
+}
+
+.inside_forme {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
 
 .title {
 	margin: 2px 0;
 	display: block;
-	text-align: center;
+	text-align: left;
 }
 
 .info {
-	margin: 3px 0;
+	margin: 10rem 0 1rem 0;
 	/* border: solid; */
-	height: 70%;
 	width: 100%;
-}
-
-.gender {
-	clear: both;
-	display: block;
-	border: solid;
-	height: 30px;
-	margin: 2px 0;
 }
 
 .sgn_options {
@@ -68,35 +74,65 @@ input {
 	padding: 12px 20px;
 	margin: 8px 5px;
 	box-sizing: border-box;
-	border: 2px solid #333e47;
-	border-radius: 4px;  
+	border: 2px solid rgb(215,68,59);
+	border-radius: 4px; 
+}
+.personal_info input:focus {
+	border: 2px solid rgb(215,68,59);
+	border-radius: 4px;
+	outline: none;
+
+}
+.personal_info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	/* justify-content: center; */
+	/* align-items: flex-start; */
+	/* text-align: center; */
+}
+::placeholder {
+	color: red;
+	opacity: 1; /* Firefox */
+	font-size: 15px;
+  }
+
+.signup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
-
 .submit_b {
-	clear: both;
-	display: block;
-	border: solid;
+	/* clear: both; */
+	/* display: block; */
+	border: solid rgb(215,68,59);
 	height: 50px;
-	margin: 0px 20px 10px 0;
-	float: right;
+	/* margin: 0px 15rem 5px 5px; */
+	/* float: right; */
 	padding: 6px 18px;
 	border-radius: 5px;
 	text-align: center;
 	font-size: 20px;
 	cursor: pointer;
-	width: 15vh;
+	width: 30vh;
+	background-color: rgb(215,68,59);
+	color: white;
+	border: 2px solid rgb(215,68,59);
 }
 
 .submit_b:hover {
-	background-color: black;
+	background-color: rgb(215,68,59);
 	color: white;
-	border: 2px solid black;
+	border: 2px solid rgb(215,68,59);
 }
 
 .ch_rememberme {
 	float: left;
 	width: 20px;
+	accent-color: rgb(235, 42, 32);
+
 }
 
 .l_rememberme {
@@ -105,15 +141,30 @@ input {
 	height: 30px;
 	padding-top: 6px;
 	margin-left: 0;
+	font-size: 16px;
 }
 .rememberme {
 	margin-top: 20px;
-	margin-left: 20px;
+	/* margin-left: 24%; */
+	text-align: left;
 }
 
 .error {
 	display: block;
-	margin: -5px 8px 15px 8px;
+	margin: -5px 0 15px 7px;
 	height: 10px ;
 	color: rgb(189, 4, 80);
+}
+
+
+.side_form {
+	background-image: url('/static/img/log.jpg');
+	/* background-image: initial; */
+	/* background-size: 100%, 100%; */
+	filter: opacity(1);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 80px;
+	/* border: solid; */
+	width: calc(100%);
 }

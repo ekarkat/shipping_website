@@ -20,7 +20,7 @@
 	height: 45rem;
 }
 
-.main_panel {
+.profile_panel {
 	width: 80rem;
 	height: 45rem;
 }
@@ -38,4 +38,17 @@
 
 div .pp {
 	margin-top: 3rem;
+}
+
+
+.create_panel {
+	display: none;
+	width: 80rem;
+	height: 45rem;
+}
+
+.delivery_panel {
+	display: none;
+	width: 80rem;
+	height: 45rem;
 }

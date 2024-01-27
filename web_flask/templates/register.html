@@ -1,100 +1,77 @@
 {% extends "layout.html" %}
 {% block css %}
 <link href="{{ url_for('static', filename='css/register.css') }}" rel="stylesheet" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 
 {% endblock css %}
 
 {% block content %}
-	<form class="register", method="post">
-		{{ form.hidden_tag() }}
-		<div class="title">
-			<div class="main_title">Create your account</div>
-			<div class="under_title">Please enter your personal details below</details></div>
-		</div>
-		<div class="info">
-			<div class="form">
-				<div class="personal_info">
-					{{form.full_name.label()}}
-					{{form.full_name(placeholder="Enter your name")}}
-					{% if form.full_name.errors %}
-						{% for error in form.full_name.errors %}
-						<div class="error"> {{ error }} </div>
-						{% endfor %}
-					{% endif %}
-
-					{{form.city.label()}}
-					{{form.city(placeholder="Enter your city")}}
-					{% if form.city.errors %}
-						{% for error in form.city.errors %}
-						<div class="error"> {{ error }} </div>
-						{% endfor %}
-					{% endif %}
-
-					{{form.address.label()}}
-					{{form.address(placeholder="Enter your address")}}
-					{% if form.address.errors %}
-						{% for error in form.address.errors %}
-						<div class="error"> {{ error }} </div>
-						{% endfor %}
-					{% endif %}
-
-					{{form.phone.label()}}
-					{{form.phone(placeholder="Enter your phone")}}
-					{% if form.phone.errors %}
-						{% for error in form.phone.errors %}
-						<div class="error"> {{ error }} </div>
-						{% endfor %}
-					{% endif %}
-
-					{{form.postal_code.label()}}
-					{{form.postal_code(placeholder="Zip code")}}
-					{% if form.postal_code.errors %}
-						{% for error in form.postal_code.errors %}
-						<div class="error"> {{ error }} </div>
-						{% endfor %}
-					{% endif %}
-
-					{{form.birth_date.label()}}
-					{{form.birth_date()}}
-					{% if form.birth_date.errors %}
-						{% for error in form.birth_date.errors %}
-						<div class="error"> {{ error }} </div>
-						{% endfor %}
-					{% endif %}
-
-					{{form.email.label()}}
-					{{form.email(placeholder="Enter your email")}}
-					{% if form.email.errors %}
-						{% for error in form.email.errors %}
-						<div class="error"> {{ error }} </div>
-						{% endfor %}
-					{% endif %}
-
-					{{form.password.label()}}
-					{{form.password(placeholder="Enter your password")}}
-					{% if form.password.errors %}
-						{% for error in form.password.errors %}
-						<div class="error"> {{ error }} </div>
-						{% endfor %}
-					{% endif %}
-
-					{{form.confirm_password.label()}}
-					{{form.confirm_password(placeholder="Confirm your password")}}
-					{% if form.email.errors %}
-						{% for error in form.confirm_password.errors %}
-						<div class="error"> {{ error }} </div>
-						{% endfor %}
-					{% endif %}
-
+	<div class="reg_all">
+		<div class="register_page">
+			<div class="side_registraion"></div>
+			<form class="register", method="post">
+				{{ form.hidden_tag() }}
+				<div class="register_logo"></div>
+				<div class="title">
+					<div class="main_title">Create your account</div>
 				</div>
-			</div>
+				<div class="info">
+						<div class="personal_info">
+							{{form.full_name(placeholder="Enter your name")}}
+							{% if form.full_name.errors %}
+								<div class="error"> {{ form.full_name.errors[0] }} </div>
+							{% endif %}
+		
+							{{form.city(placeholder="Enter your city")}}
+							{% if form.city.errors %}
+								<div class="error"> {{ form.city.errors[0] }} </div>
+							{% endif %}
+		
+							{{form.address(placeholder="Enter your address")}}
+							{% if form.address.errors %}
+								<div class="error"> {{ form.address.errors[0] }} </div>
+							{% endif %}
+		
+							{{form.phone(placeholder="Enter your phone")}}
+							{% if form.phone.errors %}
+								<div class="error"> {{ form.phone.errors[0] }} </div>
+							{% endif %}
+		
+							{{form.postal_code(placeholder="Zip code")}}
+							{% if form.postal_code.errors %}
+								<div class="error"> {{ form.postal_code.errors[0] }} </div>
+							{% endif %}
+		
+							{{form.birth_date()}}
+							{% if form.birth_date.errors %}
+								<div class="error"> {{ form.birth_date.errors[0] }} </div>
+							{% endif %}
+						</div>
+						<div class="auth_info">
+							{{form.email(placeholder="Enter your email")}}
+							{% if form.email.errors %}
+								<div class="error"> {{ form.email.errors[0] }} </div>
+							{% endif %}
+		
+							{{form.password(placeholder="Enter your password")}}
+							{% if form.password.errors %}
+								<div class="error"> {{ form.password.errors[0] }} </div>
+							{% endif %}
+		
+							{{form.confirm_password(placeholder="Confirm your password")}}
+							{% if form.confirm_password.errors %}
+								<div class="error"> {{ form.confirm_password.errors[0] }} </div>
+							{% endif %}
+		
+						</div>
+				</div>
+				<div class="signup">
+					<input type="submit" value="Register" class="submit_b">
+				</div>
+			</form>
 		</div>
-		<div class="signup">
-			<input type="submit" value="Register" class="submit_b">
-		</div>
-		<div class="sgn_options">
-			Already have an account?
-			<a href="#">Sign in</a>
-		</div>
-	</form>
+	</div>
+
 {% endblock content %}

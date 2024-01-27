@@ -1,14 +1,18 @@
 #!/usr/bin/python3
-"""Registarion form rout"""
+"""Registarion form route"""
 
 from flask import render_template, url_for, request
 from web_flask import app, bycpt
 from web_flask.forms import RegisterForm, LoginForm
+from flask_login import current_user
 
 
 @app.route("/register/", methods=["GET", "POST"])
 def register():
     # register route
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
     form = RegisterForm()
     if form.validate_on_submit():
         from models.user import User

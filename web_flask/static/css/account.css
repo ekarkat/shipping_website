@@ -1,4 +1,15 @@
+.container {
+	background-image: url('/static/img/Loading_workman_carrying_boxes.jpg');
+	filter: opacity(1);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	/* border: solid; */
+}
+
 .user_panel {
+	background-image: initial;
+	background-color: rgba(6, 3, 21, 0.7);
 	height: 83vh;
 	margin: 0;
 	display: flex;
@@ -7,8 +18,11 @@
 }
 
 .user_panel div {
-	border: solid;
+	background-color: rgba(245, 245, 245, 0.9);
+	border: solid #D7443B;
+	border-radius: 8px;
 	margin: 0px 10px;
+	box-sizing: border-box;
 }
 
 .side_panel {
@@ -18,6 +32,8 @@
 	/* justify-content: space-evenly; */
 	width: 15rem;
 	height: 45rem;
+	background: rgb(233,73,95);
+	background: radial-gradient(circle, rgba(233,73,95,1) 8%, rgba(222,47,47,0.8519782913165266) 100%);
 }
 
 .profile_panel {
@@ -33,22 +49,31 @@
 	border: none;
 	cursor: pointer;
 	font-size: 1.5rem;
-	padding-left: 2rem;
+	padding-left: 1.5rem;
+	border: solid rgb(240, 234, 234);
+	border-radius: 8px;
+	background-color: rgb(250, 245, 245, 0.9);
 }
 
-div .pp {
+div .people {
 	margin-top: 3rem;
 }
 
 
-.create_panel {
-	display: none;
+.create_panel, .profile_panel, .delivery_panel {
 	width: 80rem;
 	height: 45rem;
 }
 
 .delivery_panel {
 	display: none;
-	width: 80rem;
-	height: 45rem;
+
+}
+.user_panel .profile_panel {
+	/* display: none; */
+	/* border: solid rgb(105, 99, 99); */
+}
+.create_panel {
+	display: none;
+
 }

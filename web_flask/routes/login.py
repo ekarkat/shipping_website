@@ -1,17 +1,19 @@
 #!/usr/bin/python3
-"""Registarion form rout"""
+"""Login form route"""
 
 from flask import render_template, url_for, request, redirect
-from web_flask import app, bycpt
+from web_flask import app, bycpt, login_manager
 from web_flask.forms import LoginForm
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
+    # Login route
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
 
     form = LoginForm()
-
     if form.validate_on_submit():
         from models import storage
         user = storage.user_eamil(form.email.data)

@@ -43,11 +43,37 @@ class LoginForm(FlaskForm):
     def validate_password(form, password):
         from models import storage
         user = storage.user_eamil(form.email.data)
-        if not user:
-            raise ValidationError("Email doesn't exist")
-        print(user)
-        passw = user.user_password
-        if not bycpt.check_password_hash(user.user_password, password.data):
-            raise ValidationError('Wrong password')
+        if user:
+            passw = user.user_password
+            if not bycpt.check_password_hash(user.user_password, password.data):
+                raise ValidationError('Wrong password')
 
 
+class CreateParcel(FlaskForm):
+    # Create a parcel form:
+    to_name = StringField('Reciver name', validators=[DataRequired()])
+    to_phone_number = StringField('Reciver phone number', validators=[DataRequired()])
+    to_address = StringField('Reciver address', validators=[DataRequired()])
+    to_city = StringField('Reciver city', validators=[DataRequired()])
+    parcel_weight = StringField('parcel weight')
+    parcel_comments = StringField('comments')
+    submit = SubmitField('Create')
+
+
+class UserProfile(FlaskForm):
+    # Create a parcel form:
+    full_name = StringField('Full name', validators=[DataRequired(), Length(min=3, max=60)])
+    city = StringField('City', validators=[DataRequired(), Length(min=3, max=20)])
+    address = StringField('Address', validators=[DataRequired(), Length(min=3, max=124)])
+    phone = StringField('Phone number', validators=[DataRequired(), Length(min=3, max=20)])
+    postal_code = StringField('Postal code', validators=[])
+    birth_date = DateField('Date of Birth')
+    email = StringField('Email', validators=[DataRequired(), Email(), Length(min=3, max=20)])
+    submit = SubmitField('Update')
+
+    # costum validation
+    def validate_email(self, email):
+        from models import storage
+        user = storage.user_eamil(email.data)
+        if user:
+            raise ValidationError("Email already exist")

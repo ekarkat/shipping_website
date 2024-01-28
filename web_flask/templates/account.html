@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block css %}
 <link href="{{ url_for('static', filename='css/account.css') }}" rel="stylesheet" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 {% endblock css %}
 
 {% block content %}
@@ -12,8 +15,86 @@
 		<div class="history">History</div>
 		<div class="contact">Contact us</div>
 	</div>
-	<div class="profile_panel"></div>
-	<div class="create_panel"></div>
-	<div class="delivery_panel"></div>
+	<div class="profile_panel">
+		<div class="profile_title">My Profile</div>
+		<form method="post">
+			{{ user_profile.hidden_tag() }}
+			<div class="info1">
+				{{user_profile.full_name.label}}
+				{{ user_profile.full_name(placeholder=current_user.user_full_name, value=current_user.user_full_name) }}
+				{% if user_profile.full_name.errors %}
+					<div class="error"> {{user_profile.full_name.errors[0] }} </div>
+				{% endif %}
+				{{user_profile.birth_date.label}}
+				<!-- {{user_profile.birth_date(type="text", placeholder=current_user.user_birth_date, onfocus="(this.type='date')", onblur="(this.type='text')")}} -->
+				{{user_profile.birth_date(value=current_user.user_birth_date, onfocus="(this.type='date')", onblur="(this.type='text')")}}
+
+				{{user_profile.email.label}}
+				{{user_profile.email(placeholder=current_user.user_email, value=current_user.user_email)}}
+				{% if user_profile.email.errors %}
+					<div class="error"> {{user_profile.email.errors[0] }} </div>
+				{% endif %}
+				{{user_profile.phone.label}}
+				{{user_profile.phone(placeholder=current_user.user_phone_number, value=current_user.user_phone_number)}}
+				{% if user_profile.phone.errors %}
+					<div class="error"> {{user_profile.phone.errors[0] }} </div>
+				{% endif %}
+			</div>
+			<div class="info2">
+				{{user_profile.address.label}}
+				{{user_profile.address(placeholder=current_user.user_address, value=current_user.user_address, class="address")}}
+				{% if user_profile.full_name.errors %}
+					<div class="error"> {{user_profile.address.errors[0] }} </div>
+				{% endif %}
+				{{user_profile.postal_code.label}}
+				{{user_profile.postal_code(placeholder="Zip code")}}
+				{% if user_profile.postal_code.errors %}
+					<div class="error"> {{user_profile.postal_code.errors[0] }} </div>
+				{% endif %}
+			</div>
+			<div class="update">
+				{{user_profile.submit(placeholder="update", class="submit_b")}}
+			</div>
+		</form>
+	</div>
+	<div class="create_panel">
+		<form method="post">
+			{{ create_form.hidden_tag() }}
+			{{create_form.to_name(placeholder="Reciever Full name")}}
+			{% if create_form.to_name.errors %}
+				<div class="error"> {{create_form.to_name.errors[0] }} </div>
+			{% endif %}
+
+			{{create_form.to_phone_number(placeholder="Enter the reciever phone number")}}
+			{% if create_form.to_phone_number.errors %}
+				<div class="error"> {{create_form.to_phone_number.errors[0] }} </div>
+			{% endif %}
+
+			{{create_form.to_address(placeholder="Enter the reciever address")}}
+			{% if create_form.to_address.errors %}
+				<div class="error"> {{create_form.to_address.errors[0] }} </div>
+			{% endif %}
+
+			{{create_form.to_city(placeholder="Enter the reciever city")}}
+			{% if create_form.to_city.errors %}
+				<div class="error"> {{create_form.to_city.errors[0] }} </div>
+			{% endif %}
+
+			{{create_form.parcel_weight(placeholder="Enter the parcel weight")}}
+			{% if create_form.parcel_weight.errors %}
+				<div class="error"> {{create_form.parcel_weight.errors[0] }} </div>
+			{% endif %}
+
+			{{create_form.parcel_comments(placeholder="Comments")}}
+			{% if create_form.parcel_comments.errors %}
+				<div class="error"> {{create_form.parcel_comments.errors[0] }} </div>
+			{% endif %}
+
+			{{create_form.submit(placeholder="Create", class="submit_b")}}
+		</form>
+	</div>
+	<div class="delivery_panel">
+
+	</div>
 </div>
 {% endblock content %}

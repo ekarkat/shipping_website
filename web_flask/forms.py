@@ -3,6 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from web_flask import bycpt
+from flask_login import current_user
 
 
 
@@ -57,12 +58,13 @@ class CreateParcel(FlaskForm):
     to_city = StringField('Reciver city', validators=[DataRequired()])
     parcel_weight = StringField('parcel weight')
     parcel_comments = StringField('comments')
+    to_postal_code = StringField('Postal code', validators=[DataRequired(), Length(min=5, max=20)])
     submit = SubmitField('Create')
 
 
 class UserProfile(FlaskForm):
     # Create a parcel form:
-    full_name = StringField('Full name', validators=[DataRequired(), Length(min=3, max=60)])
+    full_name = StringField('Full name')
     city = StringField('City', validators=[DataRequired(), Length(min=3, max=20)])
     address = StringField('Address', validators=[DataRequired(), Length(min=3, max=124)])
     phone = StringField('Phone number', validators=[DataRequired(), Length(min=3, max=20)])
@@ -75,5 +77,6 @@ class UserProfile(FlaskForm):
     def validate_email(self, email):
         from models import storage
         user = storage.user_eamil(email.data)
-        if user:
+        if user and user.user_email != current_user.user_email:
             raise ValidationError("Email already exist")
+        

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Switching</title>
+    <style>
+        .profile_panel, .create_panel {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile_panel">
+    <!-- Content in profile_panel -->
+    <p>This is the content in profile_panel.</p>
+</div>
+
+<div class="create_panel">
+    <!-- Content in create_panel -->
+    <p>This is the content in create_panel.</p>
+</div>
+
+<script>
+    const profile_panel = document.querySelector('.profile_panel');
+    const create_panel = document.querySelector('.create_panel');
+
+    // Variables to store content
+    let profilePanelContent = profile_panel.innerHTML;
+    let createPanelContent = create_panel.innerHTML;
+
+    profile_panel.addEventListener('click', function () {
+        // Clear content in create_panel
+		if (create_panel.innerHTML === '') {
+		}
+		else {
+			createPanelContent = create_panel.innerHTML;
+			create_panel.innerHTML = '';
+		}
+		profile_panel.innerHTML = profilePanelContent;
+    });
+
+    create_panel.addEventListener('click', function () {
+        // Clear content in profile_panel
+		if (profile_panel.innerHTML === '') {
+		}
+		else {
+			profilePanelContent = profile_panel.innerHTML;
+			profile_panel.innerHTML = '';
+		}
+		create_panel.innerHTML = createPanelContent;
+    });
+
+    // Example: Restore content on button click
+    const restoreButton = document.createElement('button');
+    restoreButton.textContent = 'Restore Content';
+    restoreButton.addEventListener('click', function () {
+        profile_panel.innerHTML = profilePanelContent;
+        create_panel.innerHTML = createPanelContent;
+    });
+
+    document.body.appendChild(restoreButton);
+</script>
+
+</body>
+</html>

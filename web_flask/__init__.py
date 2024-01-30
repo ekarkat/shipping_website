@@ -16,6 +16,14 @@ def load_user(user_id):
     user = storage.user_id(user_id)
     return (user)
 
+
+@app.before_request
+def refresh_session():
+    from models import storage
+    storage.close()
+    storage.reload()
+
+
 from web_flask.routes.register import register
 from web_flask.routes.commun import *
 from web_flask.routes.login import *

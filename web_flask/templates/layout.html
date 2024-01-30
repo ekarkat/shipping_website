@@ -41,4 +41,56 @@ Use : inside the body add the :
 	</div>
 	<footer>In progress</footer>
 </body>
+<script>
+    const profile_panel = document.querySelector('.profile_panel');
+    const create_panel = document.querySelector('.create_panel');
+    const history_panel = document.querySelector('.history_panel');	
+	const people = document.querySelector('.people');
+	const create = document.querySelector('.create');
+	const history = document.querySelector('.history');
+
+    // Variables to store content
+    let profilePanelContent = profile_panel.innerHTML;
+    let createPanelContent = create_panel.innerHTML;
+
+	history.addEventListener('click', function () {
+		create_panel.style.display = 'none'
+		profile_panel.style.display = 'none'
+		history_panel.style.display = 'block'
+		
+	});
+    people.addEventListener('click', function () {
+        // Clear content in create_panel
+		if (create_panel.innerHTML === '') {
+		}
+		else {
+			createPanelContent = create_panel.innerHTML;
+			create_panel.innerHTML = '';
+		}
+		profile_panel.innerHTML = profilePanelContent;
+		create_panel.style.display = 'none'
+		profile_panel.style.display = 'flex'
+		history_panel.style.display = 'none'
+
+    });
+
+    create.addEventListener('click', function () {
+        // Clear content in profile_panel
+		if (profile_panel.innerHTML === '') {
+		}
+		else {
+			profilePanelContent = profile_panel.innerHTML;
+			profile_panel.innerHTML = '';
+		}
+		create_panel.innerHTML = createPanelContent;
+		profile_panel.style.display = 'none'
+		create_panel.style.display = 'flex'
+		history_panel.style.display = 'none'
+    });
+	
+	document.addEventListener('DOMContentLoaded', function () {
+		createPanelContent = create_panel.innerHTML;
+		create_panel.innerHTML = '';
+	})
+</script>
 </html>

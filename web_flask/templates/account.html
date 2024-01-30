@@ -15,76 +15,101 @@
 		<div class="history">History</div>
 		<div class="contact">Contact us</div>
 	</div>
+
 	<div class="profile_panel">
 		<div class="profile_title">My Profile</div>
 		<form method="post">
-			{{ user_profile.hidden_tag() }}
+			{{ profile_form.hidden_tag() }}
 			<div class="info1">
-				{{user_profile.full_name.label}}
-				{{ user_profile.full_name(placeholder=current_user.user_full_name, value=current_user.user_full_name) }}
-				{% if user_profile.full_name.errors %}
-					<div class="error"> {{user_profile.full_name.errors[0] }} </div>
+				{{profile_form.full_name.label}}
+				{{ profile_form.full_name(placeholder=current_user.user_full_name, value=current_user.user_full_name) }}
+				{% if profile_form.full_name.errors %}
+					<div class="error"> {{profile_form.full_name.errors[0] }} </div>
 				{% endif %}
-				{{user_profile.birth_date.label}}
-				<!-- {{user_profile.birth_date(type="text", placeholder=current_user.user_birth_date, onfocus="(this.type='date')", onblur="(this.type='text')")}} -->
-				{{user_profile.birth_date(value=current_user.user_birth_date, onfocus="(this.type='date')", onblur="(this.type='text')")}}
-
-				{{user_profile.email.label}}
-				{{user_profile.email(placeholder=current_user.user_email, value=current_user.user_email)}}
-				{% if user_profile.email.errors %}
-					<div class="error"> {{user_profile.email.errors[0] }} </div>
+				{{profile_form.birth_date.label}}
+				{{profile_form.birth_date(value=current_user.user_birth_date, onfocus="(this.type='date')", onblur="(this.type='text')")}}
+				{% if profile_form.birth_date.errors %}
+					<div class="error"> {{profile_form.birth_date.errors[0] }} </div>
 				{% endif %}
-				{{user_profile.phone.label}}
-				{{user_profile.phone(placeholder=current_user.user_phone_number, value=current_user.user_phone_number)}}
-				{% if user_profile.phone.errors %}
-					<div class="error"> {{user_profile.phone.errors[0] }} </div>
+				{{profile_form.email.label}}
+				{{profile_form.email(placeholder=current_user.user_email, value=current_user.user_email)}}
+				{% if profile_form.email.errors %}
+					<div class="error"> {{profile_form.email.errors[0] }} </div>
+				{% endif %}
+				{{profile_form.phone.label}}
+				{{profile_form.phone(placeholder=current_user.user_phone_number, value=current_user.user_phone_number)}}
+				{% if profile_form.phone.errors %}
+					<div class="error"> {{profile_form.phone.errors[0] }} </div>
 				{% endif %}
 			</div>
 			<div class="info2">
-				{{user_profile.address.label}}
-				{{user_profile.address(placeholder=current_user.user_address, value=current_user.user_address, class="address")}}
-				{% if user_profile.full_name.errors %}
-					<div class="error"> {{user_profile.address.errors[0] }} </div>
+				{{profile_form.address.label}}
+				{{profile_form.address(placeholder=current_user.user_address, value=current_user.user_address, class="address")}}
+				{% if profile_form.address.errors %}
+					<div class="error"> {{profile_form.address.errors[0] }} </div>
 				{% endif %}
-				{{user_profile.postal_code.label}}
-				{{user_profile.postal_code(placeholder="Zip code")}}
-				{% if user_profile.postal_code.errors %}
-					<div class="error"> {{user_profile.postal_code.errors[0] }} </div>
+				
+				{{profile_form.city.label}}
+				{{profile_form.city(placeholder=current_user.city, value=current_user.user_city)}}
+				{% if profile_form.city.errors %}
+					<div class="error"> {{profile_form.city.errors[0] }} </div>
+				{% endif %}
+				
+				{{profile_form.postal_code.label}}
+				{{profile_form.postal_code(placeholder="Zip code")}}
+				{% if profile_form.postal_code.errors %}
+					<div class="error"> {{profile_form.postal_code.errors[0] }} </div>
 				{% endif %}
 			</div>
 			<div class="update">
-				{{user_profile.submit(placeholder="update", class="submit_b")}}
+				{{profile_form.submit(placeholder="Create", class="submit_b")}}
 			</div>
 		</form>
 	</div>
 	<div class="create_panel">
 		<form method="post">
 			{{ create_form.hidden_tag() }}
-			{{create_form.to_name(placeholder="Reciever Full name")}}
-			{% if create_form.to_name.errors %}
-				<div class="error"> {{create_form.to_name.errors[0] }} </div>
-			{% endif %}
+			<div class="create_title">Enter the reciever details bellow</div>
+			<div class="cpp1">
+				{{create_form.to_name.label}}
+				{{create_form.to_name(placeholder="Reciever Full name")}}
+				{% if create_form.to_name.errors %}
+					<div class="error"> {{create_form.to_name.errors[0] }} </div>
+				{% endif %}
 
-			{{create_form.to_phone_number(placeholder="Enter the reciever phone number")}}
-			{% if create_form.to_phone_number.errors %}
-				<div class="error"> {{create_form.to_phone_number.errors[0] }} </div>
-			{% endif %}
+				{{create_form.to_phone_number.label}}
+				{{create_form.to_phone_number(placeholder="Enter the reciever phone number")}}
+				{% if create_form.to_phone_number.errors %}
+					<div class="error"> {{create_form.to_phone_number.errors[0] }} </div>
+				{% endif %}
+			</div>
 
-			{{create_form.to_address(placeholder="Enter the reciever address")}}
+			{{create_form.to_address.label}}
+			{{create_form.to_address(placeholder="Enter the reciever address", class="create_address")}}
 			{% if create_form.to_address.errors %}
 				<div class="error"> {{create_form.to_address.errors[0] }} </div>
 			{% endif %}
 
-			{{create_form.to_city(placeholder="Enter the reciever city")}}
-			{% if create_form.to_city.errors %}
-				<div class="error"> {{create_form.to_city.errors[0] }} </div>
-			{% endif %}
-
+			<div class="ccp2">
+				{{create_form.to_city.label}}
+				{{create_form.to_city(placeholder="Enter the reciever city")}}
+				{% if create_form.to_city.errors %}
+					<div class="error"> {{create_form.to_city.errors[0] }} </div>
+				{% endif %}
+	
+				{{create_form.to_postal_code.label}}
+				{{create_form.to_postal_code(placeholder="Enter the reciever city")}}
+				{% if create_form.to_postal_code.errors %}
+					<div class="error"> {{create_form.to_postal_code.errors[0] }} </div>
+				{% endif %}
+			</div>
+			{{create_form.parcel_weight.label}}
 			{{create_form.parcel_weight(placeholder="Enter the parcel weight")}}
 			{% if create_form.parcel_weight.errors %}
 				<div class="error"> {{create_form.parcel_weight.errors[0] }} </div>
 			{% endif %}
 
+			{{create_form.parcel_comments.label}}
 			{{create_form.parcel_comments(placeholder="Comments")}}
 			{% if create_form.parcel_comments.errors %}
 				<div class="error"> {{create_form.parcel_comments.errors[0] }} </div>
@@ -94,7 +119,30 @@
 		</form>
 	</div>
 	<div class="delivery_panel">
-
+	</div>
+	<div class="history_panel">
+		<table>
+			<tr>
+				<th>Tracking number</th>
+				<th>Created date</th>
+				<th>Destination</th>
+				<th>Reciever name</th>
+				<th>Phone number</th>
+				<th>Address</th>
+				<th>Status</th>
+			</tr>
+			{% for parcel in parcels|sort(attribute="created_at", reverse=true) %}
+				<tr>
+					<td>{{ parcel.parcel_tracking_number }}</td>
+					<td>{{ parcel.created_at }}</td>
+					<td>{{ parcel.to_city }}</td>
+					<td>{{ parcel.to_name }}</td>
+					<td>{{ parcel.to_phone_number }}</td>
+					<td>{{ parcel.to_address }}</td>
+					<td>{{ parcel.parcel_status }}</td>
+				</tr>
+			{% endfor %}
+		</table>
 	</div>
 </div>
 {% endblock content %}

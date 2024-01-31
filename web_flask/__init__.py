@@ -28,3 +28,4 @@ from web_flask.routes.register import register
 from web_flask.routes.commun import *
 from web_flask.routes.login import *
 from web_flask.routes.account import *
+from web_flask.routes.test import *

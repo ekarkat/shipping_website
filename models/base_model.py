@@ -65,6 +65,7 @@ class BaseModel():
             if key == "created_at":
                 created_at = value.strftime(BaseModel.t_f)
                 obj_dict[key] = created_at
+        del obj_dict['_sa_instance_state']
         return (obj_dict)
 
     def update(self, **kwargs):

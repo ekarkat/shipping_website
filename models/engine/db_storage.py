@@ -47,8 +47,15 @@ class DBStorage():
         return (result[0])
 
     def user_id(self, id):
-        """Returns a user based on email"""
+        """Returns a user based on id"""
         result = self.__session.query(User).filter_by(id=id).all()
+        if len(result) == 0:
+            return None
+        return (result[0])
+
+    def parcel_id(self, id):
+        """Returns a user based on id"""
+        result = self.__session.query(Parcel).filter_by(id=id).all()
         if len(result) == 0:
             return None
         return (result[0])

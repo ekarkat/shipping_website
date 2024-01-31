@@ -3,67 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Switching</title>
-    <style>
-        .profile_panel, .create_panel {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Download HTML Example</title>
 </head>
+<style>
+body {
+	width: 40rem;
+}
+.container {
+	background-color: white;
+	background-image: none;
+}
+.cont{
+	border: solid;
+	width: 100%;
+	box-sizing: border-box;
+}
+.sender {
+	margin: 2rem;
+	display: flex;
+	height: 7rem;
+	border-bottom: 1px solid;
+}
+.sender_details{
+	display: flex;
+	flex-direction: column;
+	margin-left: 2rem;
+}
+h2 {
+	margin: 0px;
+}
+h3 {
+	margin: 0px 0 5px 0;
+}
+
+.reciever {
+	margin: 2rem;
+	display: flex;
+	border-bottom: 1px solid;
+}
+.reciever_details{
+	display: flex;
+	flex-direction: column;
+	margin-left: 2rem;
+}
+
+
+.tracking {
+	display: flex;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	/* justify-content: space-around; */
+	align-items: center;
+	border-bottom: 1px solid;
+}
+.num {
+	align-self: flex-start;
+	margin-right: 4rem;
+}
+h1 {
+	margin-right: 3rem;
+}
+
+div.logos {
+	background-image: url("/static/img/shipit.jpg");
+	width: 250px;
+	height: 100px;
+	display: inline-block;
+	background-position: center;
+	margin-left: 11rem;
+	margin-top: 3rem;
+	border: none;
+}
+</style>
 <body>
 
-<div class="profile_panel">
-    <!-- Content in profile_panel -->
-    <p>This is the content in profile_panel.</p>
-</div>
-
-<div class="create_panel">
-    <!-- Content in create_panel -->
-    <p>This is the content in create_panel.</p>
-</div>
-
-<script>
-    const profile_panel = document.querySelector('.profile_panel');
-    const create_panel = document.querySelector('.create_panel');
-
-    // Variables to store content
-    let profilePanelContent = profile_panel.innerHTML;
-    let createPanelContent = create_panel.innerHTML;
-
-    profile_panel.addEventListener('click', function () {
-        // Clear content in create_panel
-		if (create_panel.innerHTML === '') {
-		}
-		else {
-			createPanelContent = create_panel.innerHTML;
-			create_panel.innerHTML = '';
-		}
-		profile_panel.innerHTML = profilePanelContent;
-    });
-
-    create_panel.addEventListener('click', function () {
-        // Clear content in profile_panel
-		if (profile_panel.innerHTML === '') {
-		}
-		else {
-			profilePanelContent = profile_panel.innerHTML;
-			profile_panel.innerHTML = '';
-		}
-		create_panel.innerHTML = createPanelContent;
-    });
-
-    // Example: Restore content on button click
-    const restoreButton = document.createElement('button');
-    restoreButton.textContent = 'Restore Content';
-    restoreButton.addEventListener('click', function () {
-        profile_panel.innerHTML = profilePanelContent;
-        create_panel.innerHTML = createPanelContent;
-    });
-
-    document.body.appendChild(restoreButton);
-</script>
+	<div class="cont">
+		<div class="sender">
+			<h2>Sender:</h2>
+			<div class="sender_details">
+				<h3>' + username.textContent + '</h3>
+				<h3>' + user_city.textContent + '</h3>
+				<h3>' + user_phone.textContent + '</h3>
+			</div>
+		</div>
+		<div class="reciever">
+			<h2>Reciever</h2>
+			<div class="reciever_details">
+				<h3>' + name + '</h3>
+				<h3>' + phoneNumber + '</h3>
+				<h3>' + address + '</h3>
+				<h3>' + city + '</h3>
+				<h3>' + tracking + '</h3>
+			</div>
+		</div>
+		<div class="tracking">
+			<h1 class="num">Tracking number</h1>
+			<h1>' + tracking + '</h1>
+		</div>
+		<div class="logos">
+		</div>
+	</div>
 
 </body>
 </html>

@@ -6,7 +6,12 @@
 	background-position: center center;
 	/* border: solid; */
 }
-
+.user {
+	display: none;
+}
+.ida {
+	display: none;
+}
 .user_panel {
 	background-image: initial;
 	background-color: rgba(6, 3, 21, 0.7);
@@ -67,13 +72,6 @@ div .people {
 }
 .history_panel {
 	display: none;
-}
-table {
-	width: 100%;
-}
-th, table, td {
-	border: solid;
-	border-collapse: collapse;
 }
 
 
@@ -266,5 +264,99 @@ th, table, td {
 }
 
 .history_panel::-webkit-scrollbar{
+	display: none;
+}
+
+
+.delivery_panel {
+	overflow-y: scroll;
+}
+.delivery_panel::-webkit-scrollbar{
+	display: none;
+}
+
+table {
+	width: 100%;
+}
+th, table, td {
+	border: solid;
+	border-collapse: collapse;
+}
+
+.user_panel .actions {
+	display: inline-flex;
+	justify-content: space-around;
+	margin: 0px;
+	border: none;
+	width: 100px;
+}
+
+.delete {
+	/* display: inline-block; */
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    border: 2px solid rgb(231, 50, 50);
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px #333;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.delete:hover {
+    background-color: rgb(245, 207, 207);
+    transform: scale(1.1);
+    box-shadow: 0 0 4px #111;
+    transition: .3s;
+}
+
+svg {
+    color: rgb(231, 50, 50);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+}
+
+.delete:focus svg {
+    opacity: 1;
+    transition: .3s;
+}
+
+
+
+
+.print img {
+	padding-top: 3.5px;
+	padding-left: 0.5px;
+}
+
+.print {
+	border: 2px solid rgb(71, 167, 159);
+	border-radius: 10px;
+}
+
+button.print {
+	padding: 0.5px 2.5px;
+}
+
+.print:hover {
+	border: 2px solid rgb(71, 167, 159);
+    transform: scale(1.1);
+	cursor: pointer;
+}
+
+.status {
+	text-align: center;
+}
+
+.parcel_id{
+	display: none;
+}
+
+.vx {
 	display: none;
 }

@@ -7,6 +7,7 @@
 <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ url_for('static', filename='css/header.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 {% block css %}{% endblock %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -41,56 +42,9 @@ Use : inside the body add the :
 	</div>
 	<footer>In progress</footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js/dist/html2pdf.bundle.js"></script>
 <script>
-    const profile_panel = document.querySelector('.profile_panel');
-    const create_panel = document.querySelector('.create_panel');
-    const history_panel = document.querySelector('.history_panel');	
-	const people = document.querySelector('.people');
-	const create = document.querySelector('.create');
-	const history = document.querySelector('.history');
 
-    // Variables to store content
-    let profilePanelContent = profile_panel.innerHTML;
-    let createPanelContent = create_panel.innerHTML;
-
-	history.addEventListener('click', function () {
-		create_panel.style.display = 'none'
-		profile_panel.style.display = 'none'
-		history_panel.style.display = 'block'
-		
-	});
-    people.addEventListener('click', function () {
-        // Clear content in create_panel
-		if (create_panel.innerHTML === '') {
-		}
-		else {
-			createPanelContent = create_panel.innerHTML;
-			create_panel.innerHTML = '';
-		}
-		profile_panel.innerHTML = profilePanelContent;
-		create_panel.style.display = 'none'
-		profile_panel.style.display = 'flex'
-		history_panel.style.display = 'none'
-
-    });
-
-    create.addEventListener('click', function () {
-        // Clear content in profile_panel
-		if (profile_panel.innerHTML === '') {
-		}
-		else {
-			profilePanelContent = profile_panel.innerHTML;
-			profile_panel.innerHTML = '';
-		}
-		create_panel.innerHTML = createPanelContent;
-		profile_panel.style.display = 'none'
-		create_panel.style.display = 'flex'
-		history_panel.style.display = 'none'
-    });
-	
-	document.addEventListener('DOMContentLoaded', function () {
-		createPanelContent = create_panel.innerHTML;
-		create_panel.innerHTML = '';
-	})
 </script>
 </html>

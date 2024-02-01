@@ -1,0 +1,38 @@
+/************* Google Fonts ***************/
+
+
+/************* Variables CSS *************/
+:root {
+    --header-height: 1rem
+
+    /* z index */
+    --z-fixed: 100
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --first-color: rgb(215,68,59);
+    --first-color-alt: hsla(0, 93%, 48%, 0.945);
+    }
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+    :root {
+      --biggest-font-size: 5rem;
+      --bigger-font-size: 3rem;
+      --h1-font-size: 2.25rem;
+      --h2-font-size: 1.5rem;
+      --h3-font-size: 1.25rem;
+      --normal-font-size: 1rem;
+      --small-font-size: .875rem;
+    }
+    /* div.panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: hsla(17, 70%, 62%, 0.945);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        width: 80%;
+        height: 100%;
+        padding: 6rem 3rem 0;
+        transition: right .4s;
+    } */
+}

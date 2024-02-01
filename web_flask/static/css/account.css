@@ -113,7 +113,7 @@ div .people {
 	flex-direction: column;
 	flex-wrap: wrap;
 	background-color: rgba(245, 245, 245, 0);
-	/* height: 22rem; */
+	height: 22rem;
 	width: 50rem;
 	border: none;
 	/* border: none; */

@@ -30,15 +30,19 @@ Use : inside the body add the :
 		<div class="logo"><a href="{{ url_for('home') }}">ShipIt</a></div>
 		<div class="panel" id="panel">
 			<ul class="nav__list">
-				<li class="login_item">
+				<li class="nav_item">
 					<a href="{{ url_for('home') }}">Home</a></li>
-				<li class="login_item">
+				<li class="nav_item">
 					<a href="{{ url_for('home') }}">Services</a></li>
-				<li class="login_item">
+				<li class="nav_item">
 					<a href="{{ url_for('home') }}">Pricing</a></li>
-				<li class="login_item">
+				<li class="nav_item">
 					<a href="{{ url_for('home') }}">About Us</a></li>
-			{% if current_user.is_authenticated %}
+			</ul>
+		</div>
+		<div class="nav_authentication">
+			<ul class="authentication__list">
+				{% if current_user.is_authenticated %}
 				<li class="login_item">
 					<a href="{{ url_for('account') }}">Account</a></li>
 				<li class="login_item">
@@ -49,8 +53,8 @@ Use : inside the body add the :
 				<li class="login_item">
 					<a href="{{ url_for('register') }}">Register</a></li>
 			{% endif %}
-			</ul>
-		</div>
+		</ul>
+			</div>
 		<!-- <div class="login">
 
 		</div> -->

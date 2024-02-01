@@ -21,6 +21,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin: auto;
 }
 
 .nav{
@@ -74,7 +75,9 @@ ul {
 	border-bottom-color: #fff9c7 
 }
 
-
+.nav_item a:hover{
+	color: var(--first-color-alt);
+}
 .login_item a:hover{
 	color: var(--first-color-alt);
 }
@@ -98,7 +101,7 @@ ul {
 	z-index: 11;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1000px) {
 
 	.nav__toggle {
 		display: none;
@@ -114,13 +117,24 @@ ul {
 	.nav__list li {
 		margin-right: 2.5rem;
 	}
+
 	
+}
+
+.authentication__list{
+	display: flex;
+	flex-direction: row;
+	row-gap: 2.5rem;
+	margin-right: 2rem;
+}
+.authentication__list li {
+	margin-right: 2.5rem;
 }
 
 
 
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1000px){
 	.panel{
 		position: fixed;
 		top: 0;
@@ -157,7 +171,12 @@ ul {
 }
 
 
-
+.nav_authentication li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s;
+}
 
 
 .nav__list li a {
@@ -167,7 +186,7 @@ ul {
     transition: color 0.3s;
 }
 
-.login_item{
+.login_item, .nav_item{
 	transition: color .4s;
 }
 

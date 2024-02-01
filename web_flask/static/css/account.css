@@ -15,7 +15,7 @@
 .user_panel {
 	background-image: initial;
 	background-color: rgba(6, 3, 21, 0.7);
-	height: 83vh;
+	height: 48rem;
 	margin: 0;
 	display: flex;
 	justify-content: center;
@@ -34,9 +34,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	flex-shrink: 0;
 	/* justify-content: space-evenly; */
 	width: 15rem;
-	height: 45rem;
+	height: 96%;
 	background: rgb(233,73,95);
 	background: radial-gradient(circle, rgba(233,73,95,1) 8%, rgba(222,47,47,0.8519782913165266) 100%);
 }
@@ -49,7 +50,7 @@
 	margin: 15px;
 	border: none;
 	cursor: pointer;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	padding-left: 1.5rem;
 	border: solid rgb(240, 234, 234);
 	border-radius: 8px;
@@ -63,7 +64,7 @@ div .people {
 
 .create_panel, .profile_panel, .delivery_panel, .history_panel {
 	width: 80rem;
-	height: 45rem;
+	height: 96%;
 }
 
 .delivery_panel {
@@ -112,7 +113,7 @@ div .people {
 	flex-direction: column;
 	flex-wrap: wrap;
 	background-color: rgba(245, 245, 245, 0);
-	height: 15rem;
+	height: 22rem;
 	width: 50rem;
 	border: none;
 	/* border: none; */
@@ -146,8 +147,9 @@ div .people {
 .profile_panel .update {
 	background-color: rgba(245, 245, 245, 0);
 	border: none;
-	margin-top: 4rem;
+	/* margin-top: 10%; */
 	height: 5rem;
+	margin: 1rem 0 0 0;
 }
 .profile_panel .submit_b {
 	height: 3rem;

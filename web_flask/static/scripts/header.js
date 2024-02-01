@@ -10,16 +10,21 @@ document.addEventListener("DOMContentLoaded", function() {
         navToggle.addEventListener('click', () => {
             panel.classList.add('show-panel');
             navClose.style.display = 'block'
+            navToggle.style.display = 'none'
         });
     }
     // Hide the Panel
     if (navClose) {
         navClose.addEventListener('click', () => {
             panel.classList.remove('show-panel');
+            navToggle.style.display = 'block'
             navClose.style.display = 'none'
 
         });
     }
+
+
+    
     const logItem = document.querySelectorAll('.login_item');
     const linkAction = () =>{
         const panel = document.getElementById('panel')

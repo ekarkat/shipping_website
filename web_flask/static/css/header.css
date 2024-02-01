@@ -17,6 +17,11 @@
 	color: var(--first-color-alt)
 	
 }
+.nav_container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 
 .nav{
 	position: relative;
@@ -28,6 +33,8 @@
 
 ul {
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .logo {
@@ -45,6 +52,8 @@ ul {
 	transition: background-color;
 	/* border: none; */
 }
+
+
 
 .logo:hover {
 	background-color: var(--first-color-alt)
@@ -81,7 +90,7 @@ ul {
 	color: white;
 }
 
-.nav__close{
+.nav__close, .nav__toggle{
 	position: absolute;
 	top: 1rem;
 	/* display: none; */
@@ -89,24 +98,29 @@ ul {
 	z-index: 11;
 }
 
+@media screen and (min-width: 900px) {
 
-
-.nav__toggle,.nav__close{
-	font-size: 1.5rem;
-	cursor: pointer;
+	.nav__toggle {
+		display: none;
+	}
+	
+	.nav__list{
+		display: flex;
+		flex-direction: row;
+		row-gap: 2.5rem;
+		margin-right: 2rem;
+	}
+	
+	.nav__list li {
+		margin-right: 2.5rem;
+	}
+	
 }
 
-.nav__toggle{
-	transition: display;
-}
-.nav__toggle:hover{
-	color: var(--first-color-alt);
-}
-.nav__close:hover{
-	color: var(--first-color-alt);
-}
 
-@media screen and (max-width: 1150px){
+
+
+@media screen and (max-width: 900px){
 	.panel{
 		position: fixed;
 		top: 0;
@@ -120,12 +134,37 @@ ul {
 		z-index: 10;
 		transition: right .4s ease;
 	}
+
+	.nav__toggle,.nav__close{
+		font-size: 1.5rem;
+		cursor: pointer;
+	}
+	
+	.nav__toggle:hover{
+		color: var(--first-color-alt);
+	}
+	.nav__close:hover{
+		color: var(--first-color-alt);
+	}
+
+	
+	.nav__list{
+		display: flex;
+		flex-direction: column;
+		row-gap: 2.5rem;
+	}
+	
 }
 
-.nav__list{
-	display: flex;
-	flex-direction: column;
-	row-gap: 2.5rem;
+
+
+
+
+.nav__list li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
 .login_item{

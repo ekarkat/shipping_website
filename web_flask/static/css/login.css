@@ -1,4 +1,4 @@
-
+/* Login.css */
 div.container {
 	text-align: center;
 	border: none;
@@ -122,15 +122,15 @@ input {
 }
 
 .submit_b:hover {
-	background-color: rgb(215,68,59);
+	background-color: hsla(0, 93%, 48%, 0.945);
 	color: white;
-	border: 2px solid rgb(215,68,59);
+	border: 2px solid hsla(0, 93%, 48%, 0.945);
 }
 
 .ch_rememberme {
 	float: left;
 	width: 20px;
-	accent-color: rgb(235, 42, 32);
+	accent-color: var(--first-color-alt)/*rgb(235, 42, 32)*/;
 
 }
 
@@ -160,10 +160,10 @@ input {
 	background-image: url('/static/img/log.jpg');
 	/* background-image: initial; */
 	/* background-size: 100%, 100%; */
-	filter: opacity(1);
+	filter: opacity(80);
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: 0 80px;
+	background-position: 20% 20%;
 	/* border: solid; */
 	width: calc(100%);
 }

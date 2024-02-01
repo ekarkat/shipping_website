@@ -63,10 +63,11 @@
 				{% if profile_form.postal_code.errors %}
 					<div class="error"> {{profile_form.postal_code.errors[0] }} </div>
 				{% endif %}
+				<div class="update">
+					{{profile_form.submit(placeholder="Create", class="submit_b")}}
+				</div>
 			</div>
-			<div class="update">
-				{{profile_form.submit(placeholder="Create", class="submit_b")}}
-			</div>
+
 		</form>
 	</div>
 	<div class="create_panel">

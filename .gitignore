@@ -6,6 +6,7 @@
 !.vscode/*.code-snippets
 
 xx/
+.env
 
 _test*
 __pycache__

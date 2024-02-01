@@ -7,6 +7,8 @@ from models.parcel import Parcel
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
+from dotenv import load_dotenv
+import os
 from sys import argv
 
 class DBStorage():
@@ -16,13 +18,18 @@ class DBStorage():
 
     def __init__(self):
         """Start engine"""
-        self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}".
-                                        format(("root"),
-                                                ("root"),
-                                                ("localhost"),
-                                                ("ship_db")),
-                                        pool_pre_ping=True)
+        load_dotenv()
+        # Read the environment variables
+        mysql_user = os.getenv("MYSQL_USER")
+        mysql_pwd = os.getenv("MYSQL_PWD")
+        mysql_host = os.getenv("MYSQL_HOST")
+        mysql_db = os.getenv("MYSQL_DB")
 
+        # Construct the connection string
+        connection_string = f"mysql+mysqldb://{mysql_user}:{mysql_pwd}@{mysql_host}/{mysql_db}?charset=utf8"
+
+        # Create engine
+        self.__engine = create_engine(connection_string, pool_pre_ping=True)
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
         objs_dic = {}

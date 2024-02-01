@@ -9,6 +9,7 @@ header{
 	/* border-right: solid black; */
 	box-sizing: border-box;
 	background-color: white;
+	font-family: "Fira Sans", sans-serif;
 }
 
 /* Control all the div in header */

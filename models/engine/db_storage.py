@@ -60,6 +60,13 @@ class DBStorage():
             return None
         return (result[0])
 
+    def parcel_track(self, track_num):
+        """Returns a user based on id"""
+        result = self.__session.query(Parcel).filter_by(parcel_tracking_number=track_num).all()
+        if len(result) == 0:
+            return None
+        return (result[0])
+
     def new(self, obj):
         """Add obj to database"""
         self.__session.add(obj)

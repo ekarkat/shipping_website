@@ -29,6 +29,7 @@ def account():
             "to_phone_number" : create_form.to_phone_number.data,
             "to_address" : create_form.to_address.data,
             "to_city" : create_form.to_city.data,
+            "to_postalcode" : create_form.to_postalcode.data,
             "parcel_weight" : create_form.parcel_weight.data,
             "parcel_comments" : create_form.parcel_comments.data,
         }

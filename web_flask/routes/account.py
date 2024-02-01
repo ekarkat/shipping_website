@@ -3,7 +3,7 @@
 from flask import render_template, url_for, request, redirect
 from web_flask import app
 from flask_login import login_user, login_required, current_user
-from web_flask.forms import CreateParcel, UserProfile
+from web_flask.forms import CreateParcel, UserProfile, ContactUs
 import models
 from flask_cors import CORS
 
@@ -16,14 +16,19 @@ def account():
     # Account route
     create_form = CreateParcel()
     profile_form = UserProfile()
+    contactus = ContactUs()
 
     if profile_form.validate_on_submit():
-		# if user submit in edit profile
+        # if user submit in edit profile
         print(profile_form.email.data)
+
+    if contactus.validate_on_submit():
+        # if user submit in edit profile
+        print(contactus.message.data)
         return redirect(url_for('account'))
 
     if create_form.validate_on_submit():
-		# if user create a parcel
+        # if user create a parcel
         parcel = {
             "to_name" : create_form.to_name.data,
             "to_phone_number" : create_form.to_phone_number.data,
@@ -37,7 +42,7 @@ def account():
         current_user.create_parcel(**parcel)
         return redirect(url_for('account'))
 
+    # parcels to render in 
     parcels = current_user.user_parcels
-    # print(parcels)
 
-    return render_template("account.html", profile_form=profile_form, create_form=create_form, parcels=parcels)
+    return render_template("account.html", profile_form=profile_form, create_form=create_form, parcels=parcels, contactus=contactus)

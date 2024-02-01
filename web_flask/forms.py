@@ -1,6 +1,6 @@
 """ Forms used """
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from web_flask import bycpt
 from flask_login import current_user
@@ -79,4 +79,7 @@ class UserProfile(FlaskForm):
         user = storage.user_eamil(email.data)
         if user and user.user_email != current_user.user_email:
             raise ValidationError("Email already exist")
-        
+
+class ContactUs(FlaskForm):
+    message = TextAreaField('Message', validators=[DataRequired(), Length(min=3, max=1024)])
+    submit = SubmitField('Send email')

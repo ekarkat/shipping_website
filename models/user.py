@@ -6,9 +6,19 @@ from models.parcel import Parcel
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from flask_login import UserMixin
+import random
+import string
 
 
-
+def generate_unique_code():
+    from models import storage
+    # Generate a 10-digit random code
+    code = 'MA'+''.join(str(random.randint(0, 9)) for _ in range(9)) + random.choice(string.ascii_uppercase)
+    # Check if the generated code is already in use
+    while storage.parcel_track(code):
+        # If it's in use, generate a new code
+        code = ''.join(str(random.randint(0, 9)) for _ in range(10))
+    return code
 
 class User(BaseModel, Base, UserMixin):
     # User attribute
@@ -24,11 +34,14 @@ class User(BaseModel, Base, UserMixin):
 
     def create_parcel(self, **kwargs):
         # Method for user to create a parcel
+        track_num = generate_unique_code()
         user_details = {
             "from_name" : self.user_full_name,
             "from_phone_number" : self.user_phone_number,
             "from_city" : self.user_city,
-            "parcel_user_id" : self.id
+            "parcel_user_id" : self.id,
+            "parcel_tracking_number": track_num,
+            "parcel_status": "Ready for Pickup"
             }
         details ={**user_details, **kwargs}
         parcel = Parcel(**details)

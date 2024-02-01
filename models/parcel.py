@@ -15,6 +15,7 @@ class Parcel(BaseModel, Base):
     to_phone_number = Column(String(60), nullable=True)
     to_address = Column(String(1024), nullable=True)
     to_city = Column(String(60), nullable=True)
+    to_postalcode = Column(String(60), nullable=True)
     parcel_weight = Column(String(60), nullable=True)
     parcel_tracking_number = Column(String(60), nullable=True)
     parcel_status = Column(String(60), nullable=True)

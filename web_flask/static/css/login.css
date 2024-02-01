@@ -2,6 +2,7 @@
 div.container {
 	text-align: center;
 	border: none;
+	font-family: "Fira Sans", sans-serif;
 }
 
 .first {
@@ -75,6 +76,8 @@ input {
 	box-sizing: border-box;
 	border: 2px solid rgb(215,68,59);
 	border-radius: 4px; 
+	font-family: "Fira Sans", sans-serif;
+	font-size: 16px;
 }
 .personal_info input:focus {
 	border: 2px solid rgb(215,68,59);
@@ -94,6 +97,7 @@ input {
 	color: red;
 	opacity: 1; /* Firefox */
 	font-size: 15px;
+	font-family: "Fira Sans", sans-serif;
 }
 
 .signup {

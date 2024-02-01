@@ -8,9 +8,9 @@
 	top: 0px;
 	left: 0;
 	/* border-right: solid black; */
-	/* box-sizing: border-box; */
-	background-color: #fff9c7;
-
+	box-sizing: border-box;
+	background-color: white;
+	font-family: "Fira Sans", sans-serif;
 }
 
 .active-link{

@@ -23,7 +23,7 @@
 }
 
 .user_panel div {
-	background-color: rgba(245, 245, 245, 0.9);
+	background-color: rgba(245, 245, 245, 1);
 	border: solid #D7443B;
 	border-radius: 8px;
 	margin: 0px 10px;
@@ -182,7 +182,7 @@ div .people {
 	border: 2px solid rgb(215,68,59);
 	border-radius: 4px;
 	font-family: "Fira Sans", sans-serif;
-	font-size: 15px;
+	font-size: 17px;
 }
 .create_panel label {
 	/* margin: 1rem 2rem; */
@@ -195,7 +195,7 @@ div .people {
 
 ::placeholder {
 	color: black;
-	opacity: 0.8; /* Firefox */
+	opacity: 0.82; /* Firefox */
 	font-size: 16px;
 	font-family: "Fira Sans", sans-serif;
 }
@@ -205,7 +205,7 @@ div .people {
 	border-radius: 4px;
 	outline: none;
 	font-family: "Fira Sans", sans-serif;
-	font-size: 15px;
+	font-size: 16px;
 }
 
 .submit_b {
@@ -232,6 +232,9 @@ div .people {
 	border: 2px solid rgb(215,68,59);
 }
 
+#submit {
+	border: none;
+}
 .create_panel .cpp1 {
 	background-color:  rgba(245, 245, 245, 0);
 	height: 6rem;
@@ -282,6 +285,9 @@ th, table, td {
 	border: solid;
 	border-collapse: collapse;
 }
+td {
+	padding: 0rem 0 0 8px;
+}
 
 .user_panel .actions {
 	display: inline-flex;
@@ -325,7 +331,6 @@ svg {
     opacity: 1;
     transition: .3s;
 }
-
 
 
 

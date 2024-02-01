@@ -58,7 +58,7 @@ class CreateParcel(FlaskForm):
     to_city = StringField('Reciver city', validators=[DataRequired()])
     parcel_weight = StringField('parcel weight')
     parcel_comments = StringField('comments')
-    to_postal_code = StringField('Postal code', validators=[DataRequired(), Length(min=5, max=20)])
+    to_postalcode = StringField('Postal code', validators=[DataRequired(), Length(min=5, max=20)])
     submit = SubmitField('Create')
 
 

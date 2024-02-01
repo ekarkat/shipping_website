@@ -11,21 +11,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // Variables to store content
     let profilePanelContent = profile_panel.innerHTML;
     let createPanelContent = create_panel.innerHTML;
-  
+
     history.addEventListener('click', function () {
       create_panel.style.display = 'none';
       profile_panel.style.display = 'none';
       delivery_panel.style.display = 'none';
       history_panel.style.display = 'block';
     });
-  
+
     delivery.addEventListener('click', function () {
       create_panel.style.display = 'none';
       profile_panel.style.display = 'none';
       history_panel.style.display = 'none';
       delivery_panel.style.display = 'block';
     });
-  
+
     people.addEventListener('click', function () {
       // Clear content in create_panel
       if (create_panel.innerHTML === '') {
@@ -105,20 +105,18 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
-  
-  const parcelid = document.querySelector('.ida').textContent;
 
 
   $(document).ready(function () {
     // Add click event listener to elements with class "delete"
     $('.delete').on('click', function () {
       // Get the parcel ID from the data attribute
-      console.log(parcelid)
-  
+      var parcelId = $(this).data('id');
+      var currentRow = $(this).closest('tr');
       // Confirm deletion with the user (optional)
       if (confirm('Are you sure you want to delete this parcel?')) {
         // Send a simple request to your own backend
-        fetch(`http://localhost:5600/api/v1/parcels/${parcelid}`, {
+        fetch(`http://localhost:5600/api/v1/parcels/${parcelId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -134,6 +132,11 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
           console.log('Parcel deleted successfully:', data);
           // You may want to update the UI or perform other actions after successful deletion
+        }).then(data => {
+            console.log('Parcel deleted successfully:', data);
+            // Reload the page after successful deletion
+            currentRow.remove();
+
         })
         .catch(error => {
           console.error('Error deleting parcel:', error);

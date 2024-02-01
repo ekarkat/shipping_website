@@ -9,12 +9,12 @@
 	width: 100%;
 	box-sizing: border-box;
 	height: 48rem;
-	background-image: url('/static/img/register.jpg');
+	background-image: url('/static/img/register.png');
 	/* background-size: 100%, 100%; */
 	filter: opacity(1);
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center center;
+	background-position: center 60px;
 }
 
 .register {
@@ -61,12 +61,14 @@ label {
 input {
 	width: 15rem;
 	height: 2rem;
-	border: solid #CA403B;
+	border: solid #D7443B;
 	border-radius: 8px;
 	margin: 8px 0;
+	font-size: 17px;
+	font-family: "Fira Sans", sans-serif;
 }
 input:focus {
-	border: solid #CA403B;
+	border: solid #D7443B;
 	border-radius: 8px;
 	outline: none;
 }
@@ -74,7 +76,7 @@ input:focus {
 ::placeholder {
 	color: #2D061A;
 	opacity: 1; /* Firefox */
-	font-size: 18px;
+	font-size: 17px;
 	font-family: "Fira Sans", sans-serif;
 }
 
@@ -89,7 +91,7 @@ input:focus {
 .submit_b {
 	/* clear: both; */
 	/* display: block; */
-	border: solid #CA403B;
+	border: solid #D7443B;
 	height: 40px;
 	/* margin: 0px 15rem 5px 5px; */
 	/* float: right; */
@@ -99,15 +101,15 @@ input:focus {
 	font-size: 20px;
 	cursor: pointer;
 	width: 15.5rem;
-	background-color: #CA403B;
+	background-color: #D7443B;
 	color: white;
-	border: 2px solid #CA403B;
+	border: 2px solid #D7443B;
 }
 
 .submit_b:hover {
-	background-color: #CA403B;
+	background-color: #D7443B;
 	color: white;
-	border: 2px solid #CA403B;
+	border: 2px solid #D7443B;
 }
 
 input[type="date"] {

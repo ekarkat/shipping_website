@@ -32,4 +32,5 @@ class User(BaseModel, Base, UserMixin):
             }
         details ={**user_details, **kwargs}
         parcel = Parcel(**details)
+        parcel.save()
         return(parcel)

@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
       profile_panel.style.display = 'none';
       delivery_panel.style.display = 'none';
       history_panel.style.display = 'block';
+	  contactus_panel.style.display = 'none';
     });
 
     delivery.addEventListener('click', function () {
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
       profile_panel.style.display = 'none';
       history_panel.style.display = 'none';
       delivery_panel.style.display = 'block';
+	  contactus_panel.style.display = 'none';
     });
 
     people.addEventListener('click', function () {

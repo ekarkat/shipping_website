@@ -1,8 +1,12 @@
 
 footer {
-	background-color: rgb(15, 51, 92);
+	background-color: rgb(3, 9, 15);
 	color: #DADFE5;
 }
+
+/* footer a { 
+	color: rgb(255, 255, 255);
+} */
 
 .footer-top .container-footer{
 	padding-block: 60px;

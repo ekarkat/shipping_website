@@ -20,7 +20,17 @@ def account():
 
     if profile_form.validate_on_submit():
         # if user submit in edit profile
-        print(profile_form.email.data)
+        user = current_user
+        user_dic = {
+            "user_full_name" : profile_form.full_name.data,
+            "user_email" : profile_form.email.data,
+            "user_city" : profile_form.city.data,
+            "user_address" : profile_form.address.data,
+            "user_birth_date" : profile_form.birth_date.data,
+        }
+
+        user.update(**user_dic)
+        user.save()
 
     if contactus.validate_on_submit():
         # if user submit in edit profile

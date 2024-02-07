@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '6e8a95d08da92b8fb4158cc3ba66a6e5'
 bycpt = Bcrypt(app)
 login_manager = LoginManager(app)
-login_manager.login_view = 'login' 
+login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(user_id):

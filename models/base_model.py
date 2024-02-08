@@ -92,3 +92,6 @@ class BaseModel():
     def delete(self):
         from models import storage
         storage.delete(self)
+
+
+

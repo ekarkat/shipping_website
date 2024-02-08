@@ -7,8 +7,8 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 
 
-class City(BaseModel, Base):
+class State(BaseModel, Base):
     # User attribute
-    __tablename__ = "cities"
+    __tablename__ = "states"
     name = Column(String(128), nullable=False)
-    state_id = Column(String(128), ForeignKey("states.id"), nullable=False)
+    cities = relationship("City", backref="state_cities", cascade="all, delete")

@@ -4,6 +4,8 @@
 from models.base_model import BaseModel, Base
 from models.user import User
 from models.parcel import Parcel
+from models.city import City
+from models.state import State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session

@@ -20,6 +20,6 @@ class Parcel(BaseModel, Base):
     parcel_tracking_number = Column(String(60), nullable=True)
     parcel_status = Column(String(60), nullable=True)
     parcel_pay_type = Column(String(60), nullable=True)
-    parcel_user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
+    parcel_user_id = Column(String(128), ForeignKey("users.id"), nullable=False)
     parcel_day_in_transist = Column(Integer, nullable=True)
     parcel_comments = Column(String(512), nullable=True)

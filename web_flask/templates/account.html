@@ -24,26 +24,31 @@
 		<form method="post">
 			{{ profile_form.hidden_tag() }}
 			<div class="info1">
-				{{profile_form.full_name.label}}
-				{{ profile_form.full_name(placeholder=current_user.user_full_name, value=current_user.user_full_name) }}
-				{% if profile_form.full_name.errors %}
-					<div class="error"> {{profile_form.full_name.errors[0] }} </div>
-				{% endif %}
-				{{profile_form.birth_date.label}}
-				{{profile_form.birth_date(value=current_user.user_birth_date, onfocus="(this.type='date')", onblur="(this.type='text')")}}
-				{% if profile_form.birth_date.errors %}
-					<div class="error"> {{profile_form.birth_date.errors[0] }} </div>
-				{% endif %}
-				{{profile_form.email.label}}
-				{{profile_form.email(placeholder=current_user.user_email, value=current_user.user_email)}}
-				{% if profile_form.email.errors %}
-					<div class="error"> {{profile_form.email.errors[0] }} </div>
-				{% endif %}
-				{{profile_form.phone.label}}
-				{{profile_form.phone(placeholder=current_user.user_phone_number, value=current_user.user_phone_number)}}
-				{% if profile_form.phone.errors %}
-					<div class="error"> {{profile_form.phone.errors[0] }} </div>
-				{% endif %}
+				<div class="info1part1">
+					{{profile_form.full_name.label}}
+					{{ profile_form.full_name(placeholder=current_user.user_full_name, value=current_user.user_full_name) }}
+					{% if profile_form.full_name.errors %}
+						<div class="error"> {{profile_form.full_name.errors[0] }} </div>
+					{% endif %}
+					{{profile_form.birth_date.label}}
+					{{profile_form.birth_date(value=current_user.user_birth_date, onfocus="(this.type='date')", onblur="(this.type='text')")}}
+					{% if profile_form.birth_date.errors %}
+						<div class="error"> {{profile_form.birth_date.errors[0] }} </div>
+					{% endif %}
+				</div>
+
+				<div class="info1part1">
+					{{profile_form.email.label}}
+					{{profile_form.email(placeholder=current_user.user_email, value=current_user.user_email)}}
+					{% if profile_form.email.errors %}
+						<div class="error"> {{profile_form.email.errors[0] }} </div>
+					{% endif %}
+					{{profile_form.phone.label}}
+					{{profile_form.phone(placeholder=current_user.user_phone_number, value=current_user.user_phone_number)}}
+					{% if profile_form.phone.errors %}
+						<div class="error"> {{profile_form.phone.errors[0] }} </div>
+					{% endif %}
+				</div>
 			</div>
 			<div class="info2">
 				{{profile_form.address.label}}
@@ -51,15 +56,23 @@
 				{% if profile_form.address.errors %}
 					<div class="error"> {{profile_form.address.errors[0] }} </div>
 				{% endif %}
-				
-				{{profile_form.city.label}}
-				{{profile_form.city(placeholder=current_user.city, value=current_user.user_city)}}
-				{% if profile_form.city.errors %}
-					<div class="error"> {{profile_form.city.errors[0] }} </div>
-				{% endif %}
-				
+
+				<label for="states">Region</label>
+				<select name="states" id="states">
+					<option value="0000">{{current_user.user_state}}</option>
+					{% for state in states|sort(attribute="name") %}
+						{% if state.name != current_user.user_state %}
+							<option value={{state.id}}>{{state.name}}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+
+				<label for="cities">City</label>
+				<select name="cities" id="cities">
+					<option value="0000">{{current_user.user_city}}</option>
+				</select>
 				{{profile_form.postal_code.label}}
-				{{profile_form.postal_code(placeholder="Zip code")}}
+				{{profile_form.postal_code(placeholder=current_user.user_postalcode, value=current_user.user_postalcode)}}
 				{% if profile_form.postal_code.errors %}
 					<div class="error"> {{profile_form.postal_code.errors[0] }} </div>
 				{% endif %}

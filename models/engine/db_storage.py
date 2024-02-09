@@ -9,6 +9,7 @@ from models.state import State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
+from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 import os
 from sys import argv
@@ -32,12 +33,15 @@ class DBStorage():
 
         # Create engine
         self.__engine = create_engine(connection_string, pool_pre_ping=True)
+
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
         objs_dic = {}
         if not cls:
             result = self.__session.query(User).all()
             result.extend(self.__session.query(Parcel).all())
+            result.extend(self.__session.query(State).all())
+            result.extend(self.__session.query(City).all())
         else:
             if isinstance(cls, str):
                 result = self.__session.query(eval(cls)).all()
@@ -95,6 +99,12 @@ class DBStorage():
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session()
+
+    def ses(self):
+        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(sess_factory)
+        ses = Session()
+        return (ses)
 
     def close(self):
         # close a session

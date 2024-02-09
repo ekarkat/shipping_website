@@ -4,7 +4,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../static/scripts/register.js"></script>
 {% endblock css %}
 
 {% block content %}
@@ -23,12 +24,19 @@
 							{% if form.full_name.errors %}
 								<div class="error"> {{ form.full_name.errors[0] }} </div>
 							{% endif %}
-		
-							{{form.city(placeholder="Enter your city")}}
-							{% if form.city.errors %}
-								<div class="error"> {{ form.city.errors[0] }} </div>
-							{% endif %}
-		
+
+							<label for="states">Select Region:</label>
+							<select name="states" id="states">
+								{% for state in states|sort(attribute="name") %}
+									<option value={{state.id}}>{{state.name}}</option>
+								{% endfor %}
+							</select>
+
+							<label for="cities">Select City:</label>
+							<select name="cities" id="cities">
+
+							</select>
+
 							{{form.address(placeholder="Enter your address")}}
 							{% if form.address.errors %}
 								<div class="error"> {{ form.address.errors[0] }} </div>

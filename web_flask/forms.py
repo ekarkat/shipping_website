@@ -10,7 +10,7 @@ from flask_login import current_user
 class RegisterForm(FlaskForm):
     # Register form class
     full_name = StringField('Full name', validators=[DataRequired(), Length(min=3, max=60)])
-    city = StringField('City', validators=[DataRequired(), Length(min=3, max=20)])
+    # city = StringField('City', validators=[DataRequired(), Length(min=3, max=20)])
     address = StringField('Address', validators=[DataRequired(), Length(min=3, max=124)])
     phone = StringField('Phone number', validators=[DataRequired(), Length(min=3, max=20)])
     postal_code = StringField('Postal code', validators=[DataRequired(), Length(min=3, max=20)])
@@ -65,7 +65,7 @@ class CreateParcel(FlaskForm):
 class UserProfile(FlaskForm):
     # Create a parcel form:
     full_name = StringField('Full name')
-    city = StringField('City', validators=[DataRequired(), Length(min=3, max=20)])
+    # city = StringField('City', validators=[DataRequired(), Length(min=3, max=20)])
     address = StringField('Address', validators=[DataRequired(), Length(min=3, max=124)])
     phone = StringField('Phone number', validators=[DataRequired(), Length(min=3, max=20)])
     postal_code = StringField('Postal code', validators=[])

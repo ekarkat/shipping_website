@@ -10,10 +10,12 @@ class Parcel(BaseModel, Base):
     __tablename__ = "parcels"
     from_name = Column(String(128), nullable=False)
     from_phone_number = Column(String(60), nullable=False)
+    from_state = Column(String(60), nullable=False)
     from_city = Column(String(60), nullable=False)
     to_name = Column(String(60), nullable=True)
     to_phone_number = Column(String(60), nullable=True)
     to_address = Column(String(1024), nullable=True)
+    to_state = Column(String(60), nullable=True)
     to_city = Column(String(60), nullable=True)
     to_postalcode = Column(String(60), nullable=True)
     parcel_weight = Column(String(60), nullable=True)

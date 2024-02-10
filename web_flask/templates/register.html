@@ -26,14 +26,14 @@
 							{% endif %}
 
 							<label for="states">Select Region:</label>
-							<select name="states" id="states">
+							<select name="states" id="states" required>
 								{% for state in states|sort(attribute="name") %}
 									<option value={{state.id}}>{{state.name}}</option>
 								{% endfor %}
 							</select>
 
 							<label for="cities">Select City:</label>
-							<select name="cities" id="cities">
+							<select name="cities" id="cities" required>
 
 							</select>
 

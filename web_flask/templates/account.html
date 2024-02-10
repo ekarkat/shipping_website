@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 {% block css %}
 <link href="{{ url_for('static', filename='css/account.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='css/profile_panel.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='css/contact_panel.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='css/create_panel.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='css/delivery_hist_panel.css') }}" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
@@ -58,8 +62,8 @@
 				{% endif %}
 
 				<label for="states">Region</label>
-				<select name="states" id="states">
-					<option value="0000">{{current_user.user_state}}</option>
+				<select name="states" id="states" class="p_states">
+					<option value={{user_state.id}}>{{current_user.user_state}}</option>
 					{% for state in states|sort(attribute="name") %}
 						{% if state.name != current_user.user_state %}
 							<option value={{state.id}}>{{state.name}}</option>
@@ -68,8 +72,8 @@
 				</select>
 
 				<label for="cities">City</label>
-				<select name="cities" id="cities">
-					<option value="0000">{{current_user.user_city}}</option>
+				<select name="cities" id="cities" class="p_cities">
+					<option value={{user_city.id}}>{{current_user.user_city}}</option>
 				</select>
 				{{profile_form.postal_code.label}}
 				{{profile_form.postal_code(placeholder=current_user.user_postalcode, value=current_user.user_postalcode)}}
@@ -88,17 +92,21 @@
 			{{ create_form.hidden_tag() }}
 			<div class="create_title">Enter the reciever details bellow</div>
 			<div class="cpp1">
-				{{create_form.to_name.label}}
-				{{create_form.to_name(placeholder="Reciever Full name")}}
-				{% if create_form.to_name.errors %}
-					<div class="error"> {{create_form.to_name.errors[0] }} </div>
-				{% endif %}
+				<div class="cp_p1_p1">
+					{{create_form.to_name.label}}
+					{{create_form.to_name(placeholder="Reciever Full name")}}
+					{% if create_form.to_name.errors %}
+						<div class="error"> {{create_form.to_name.errors[0] }} </div>
+					{% endif %}
+				</div>
 
-				{{create_form.to_phone_number.label}}
-				{{create_form.to_phone_number(placeholder="Enter the reciever phone number")}}
-				{% if create_form.to_phone_number.errors %}
-					<div class="error"> {{create_form.to_phone_number.errors[0] }} </div>
-				{% endif %}
+				<div class="cp_p1_p1">
+					{{create_form.to_phone_number.label}}
+					{{create_form.to_phone_number(placeholder="Enter the reciever phone number")}}
+					{% if create_form.to_phone_number.errors %}
+						<div class="error"> {{create_form.to_phone_number.errors[0] }} </div>
+					{% endif %}
+				</div>
 			</div>
 
 			{{create_form.to_address.label}}
@@ -108,18 +116,27 @@
 			{% endif %}
 
 			<div class="ccp2">
-				{{create_form.to_city.label}}
-				{{create_form.to_city(placeholder="Enter the reciever city")}}
-				{% if create_form.to_city.errors %}
-					<div class="error"> {{create_form.to_city.errors[0] }} </div>
-				{% endif %}
-	
-				{{create_form.to_postalcode.label}}
-				{{create_form.to_postalcode(placeholder="Enter the reciever city")}}
-				{% if create_form.to_postalcode.errors %}
-					<div class="error"> {{create_form.to_postalcode.errors[0] }} </div>
-				{% endif %}
+				<div class="cp2_state">
+					<label for="states">Region</label>
+					<select name="states" id="create_states" class="create_states" required>
+						{% for state in states|sort(attribute="name") %}
+							<option value={{state.id}}>{{state.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="cp2_state">
+					<label for="cities">City</label>
+					<select name="cities" id="create_cities" class="create_cities" required>
+					</select>
+				</div>
 			</div>
+
+			{{create_form.to_postalcode.label}}
+			{{create_form.to_postalcode(placeholder="Enter the reciever city")}}
+			{% if create_form.to_postalcode.errors %}
+				<div class="error"> {{create_form.to_postalcode.errors[0] }} </div>
+			{% endif %}
+
 			{{create_form.parcel_weight.label}}
 			{{create_form.parcel_weight(placeholder="Enter the parcel weight")}}
 			{% if create_form.parcel_weight.errors %}

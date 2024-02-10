@@ -55,7 +55,7 @@ class CreateParcel(FlaskForm):
     to_name = StringField('Reciver name', validators=[DataRequired()])
     to_phone_number = StringField('Reciver phone number', validators=[DataRequired()])
     to_address = StringField('Reciver address', validators=[DataRequired()])
-    to_city = StringField('Reciver city', validators=[DataRequired()])
+    # to_city = StringField('Reciver city', validators=[DataRequired()])
     parcel_weight = StringField('parcel weight')
     parcel_comments = StringField('comments')
     to_postalcode = StringField('Postal code', validators=[DataRequired(), Length(min=5, max=20)])

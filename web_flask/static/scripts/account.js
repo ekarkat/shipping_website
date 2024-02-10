@@ -11,8 +11,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const contact = document.querySelector('.contact');
 
 	$(document).ready(function() {
+		var stateId = ''; // Initialize stateId variable
+	
 		$('#states').change(function() {
-			var stateId = $(this).val();
+			stateId = $(this).val();
+			console.log(stateId)
+			getCities(stateId);
+		});
+
+	
+		function getCities(stateId) {
 			// Make AJAX request to retrieve cities
 			$.ajax({
 				url: 'http://localhost:5600/api/v1/states/cities/' + stateId,
@@ -33,8 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
 					console.error(error);
 				}
 			});
-		});
+		}
 	});
+
   
     // Variables to store content
     let profilePanelContent = profile_panel.innerHTML;
@@ -85,6 +94,35 @@ document.addEventListener('DOMContentLoaded', function () {
       history_panel.style.display = 'none';
       delivery_panel.style.display = 'none';
       contactus_panel.style.display = 'none';
+
+	  stateId = '';
+	  		$('#states').change(function() {
+			stateId = $(this).val();
+			getCities(stateId);
+		});
+		function getCities(stateId) {
+			// Make AJAX request to retrieve cities
+			$.ajax({
+				url: 'http://localhost:5600/api/v1/states/cities/' + stateId,
+				type: 'GET',
+				success: function(data) {
+					// Clear existing options in cities dropdown
+					$('#cities').innerHTML="";
+					$('#cities').empty();
+					// Add new options for cities
+					$.each(data, function(index, city) {
+						$('#cities').append($('<option>', {
+							value: city.id,
+							text: city.name
+						}));
+					});
+				},
+				error: function(xhr, status, error) {
+					// Handle error
+					console.error(error);
+				}
+			});
+		}
     });
   
     create.addEventListener('click', function () {
@@ -107,7 +145,41 @@ document.addEventListener('DOMContentLoaded', function () {
       history_panel.style.display = 'none';
       delivery_panel.style.display = 'none';
       contactus_panel.style.display = 'none';
+
+	  $(document).ready(function() {
+		var stateId = ''; // Initialize stateId variable
+	
+		$('#create_states').change(function() {
+			stateId = $(this).val();
+			getCities(stateId);
+		});
+
+	
+		function getCities(stateId) {
+			// Make AJAX request to retrieve cities
+			$.ajax({
+				url: 'http://localhost:5600/api/v1/states/cities/' + stateId,
+				type: 'GET',
+				success: function(data) {
+					// Clear existing options in cities dropdown
+					$('#create_cities').empty();
+					// Add new options for cities
+					$.each(data, function(index, city) {
+						$('#create_cities').append($('<option>', {
+							value: city.id,
+							text: city.name
+						}));
+					});
+				},
+				error: function(xhr, status, error) {
+					// Handle error
+					console.error(error);
+				}
+			});
+		}
+	});
     });
+
     contact.addEventListener('click', function () {
       // Clear content in profile_panel
       if (profile_panel.innerHTML === '') {
@@ -158,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('sender city:', user_city.textContent);
   
       const wrapperDiv = document.createElement('div');
-      wrapperDiv.innerHTML = '<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Download HTML Example</title> </head> <style> body { width: 40rem; } .container { background-color: white; background-image: none; } .cont{ border: solid; width: 100%; box-sizing: border-box; } .sender { margin: 2rem; display: flex; height: 7rem; border-bottom: 1px solid; } .sender_details{ display: flex; flex-direction: column; margin-left: 2rem; } h2 { margin: 0px; } h3 { margin: 0px 0 5px 0; } .reciever { margin: 2rem; display: flex; border-bottom: 1px solid; } .reciever_details{ display: flex; flex-direction: column; margin-left: 2rem; } .tracking { display: flex; margin-left: 2rem; margin-right: 2rem; /* justify-content: space-around; */ align-items: center; border-bottom: 1px solid; } .num { align-self: flex-start; margin-right: 4rem; } h1 { margin-right: 3rem; } div.logos { background-image: url("/static/img/shipit.jpg"); width: 250px; height: 100px; display: inline-block; background-position: center; margin-left: 13rem; margin-top: 3rem; border: none; } </style> <body> <div class="cont"> <div class="sender"> <h2>Sender:</h2> <div class="sender_details"> <h3>' + username.textContent + '</h3> <h3>' + user_city.textContent + '</h3> <h3>' + user_phone.textContent + '</h3> </div> </div> <div class="reciever"> <h2>Reciever</h2> <div class="reciever_details"> <h3>' + name + '</h3> <h3>' + phoneNumber + '</h3> <h3>' + address + '</h3> <h3>' + city + '</h3> <h3>' + postalcode + '</h3> </div> </div> <div class="tracking"> <h1 class="num">Tracking number</h1> <h1>' + tracking + '</h1> </div> <div class="logos"> </div> </div> </body> </html> '
+      wrapperDiv.innerHTML = '<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Download HTML Example</title> </head> <style> body { width: 35rem; } .container { background-color: white; background-image: none; } .cont{ border: solid; width: 90%; box-sizing: border-box; } .sender { margin: 2rem; display: flex; height: 7rem; border-bottom: 1px solid; } .sender_details{ display: flex; flex-direction: column; margin-left: 2rem; } h2 { margin: 0px; } h3 { margin: 0px 0 5px 0; } .reciever { margin: 2rem; display: flex; border-bottom: 1px solid; } .reciever_details{ display: flex; flex-direction: column; margin-left: 2rem; } .tracking { display: flex; margin-left: 2rem; margin-right: 2rem; /* justify-content: space-around; */ align-items: center; border-bottom: 1px solid; } .num { align-self: flex-start; margin-right: 4rem; } h1 { margin-right: 3rem; } div.logos { background-image: url("/static/img/shipit.jpg"); width: 250px; height: 100px; display: inline-block; background-position: center; margin-left: 13rem; margin-top: 3rem; border: none; } </style> <body> <div class="cont"> <div class="sender"> <h2>Sender:</h2> <div class="sender_details"> <h3>' + username.textContent + '</h3> <h3>' + user_city.textContent + '</h3> <h3>' + user_phone.textContent + '</h3> </div> </div> <div class="reciever"> <h2>Reciever</h2> <div class="reciever_details"> <h3>' + name + '</h3> <h3>' + phoneNumber + '</h3> <h3>' + address + '</h3> <h3>' + city + '</h3> <h3>' + postalcode + '</h3> </div> </div> <div class="tracking"> <h1 class="num">Tracking number</h1> <h1>' + tracking + '</h1> </div> <div class="logos"> </div> </div> </body> </html> '
 
       // Create a new div to wrap the content you want to print
       const printContentDiv = document.createElement('div');

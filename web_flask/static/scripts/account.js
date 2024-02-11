@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 		$('#states').change(function() {
 			stateId = $(this).val();
-			console.log(stateId)
 			getCities(stateId);
 		});
 
@@ -74,30 +73,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     people.addEventListener('click', function () {
-      // Clear content in create_panel
-      if (create_panel.innerHTML === '') {
-      }
-      else {
-        createPanelContent = create_panel.innerHTML;
-        create_panel.innerHTML = '';
-      }
-      if (contactus_panel.innerHTML === '') {
-      }
-      else {
-        contactusPanelContent = contactus_panel.innerHTML;
-        contactus_panel.innerHTML = '';
-      }
+		// Clear content in create_panel
+		if (create_panel.innerHTML === '') {
+		}
+		else {
+			createPanelContent = create_panel.innerHTML;
+			create_panel.innerHTML = '';
+		}
+		if (contactus_panel.innerHTML === '') {
+		}
+		else {
+			contactusPanelContent = contactus_panel.innerHTML;
+			contactus_panel.innerHTML = '';
+		}
 
-      profile_panel.innerHTML = profilePanelContent;
-      create_panel.style.display = 'none';
-      profile_panel.style.display = 'flex';
-      history_panel.style.display = 'none';
-      delivery_panel.style.display = 'none';
-      contactus_panel.style.display = 'none';
+		profile_panel.innerHTML = profilePanelContent;
+		create_panel.style.display = 'none';
+		profile_panel.style.display = 'flex';
+		history_panel.style.display = 'none';
+		delivery_panel.style.display = 'none';
+		contactus_panel.style.display = 'none';
 
 	  stateId = '';
 	  		$('#states').change(function() {
 			stateId = $(this).val();
+			console.log(stateId)
 			getCities(stateId);
 		});
 		function getCities(stateId) {
@@ -126,58 +126,127 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   
     create.addEventListener('click', function () {
-      // Clear content in profile_panel
-      if (profile_panel.innerHTML === '') {
-      }
-      else {
-        profilePanelContent = profile_panel.innerHTML;
-        profile_panel.innerHTML = '';
-      }
+	// Clear content in profile_panel
+	if (profile_panel.innerHTML === '') {
+	}
+	else {
+		profilePanelContent = profile_panel.innerHTML;
+		profile_panel.innerHTML = '';
+	}
 			if (contactus_panel.innerHTML === '') {
-      }
-      else {
-        contactusPanelContent = contactus_panel.innerHTML;
-        contactus_panel.innerHTML = '';
-      }
-      create_panel.innerHTML = createPanelContent;
-      profile_panel.style.display = 'none';
-      create_panel.style.display = 'flex';
-      history_panel.style.display = 'none';
-      delivery_panel.style.display = 'none';
-      contactus_panel.style.display = 'none';
+	}
+	else {
+		contactusPanelContent = contactus_panel.innerHTML;
+		contactus_panel.innerHTML = '';
+	}
+	create_panel.innerHTML = createPanelContent;
+	profile_panel.style.display = 'none';
+	create_panel.style.display = 'flex';
+	history_panel.style.display = 'none';
+	delivery_panel.style.display = 'none';
+	contactus_panel.style.display = 'none';
 
-	  $(document).ready(function() {
-		var stateId = ''; // Initialize stateId variable
-	
-		$('#create_states').change(function() {
-			stateId = $(this).val();
-			getCities(stateId);
+	var c_stateId = ''; // Initialize stateId variable
+	$('#create_states').change(function() {
+		c_stateId = $(this).val();
+		getCities(c_stateId, function() {
+			// Callback function to be executed after cities are retrieved and dropdown is populated
+			var userCityn = $('.user_cit').text();
+			const firstOption = document.querySelector('#create_cities option:first-child');
+			var selectedCityn = firstOption.textContent;
+			console.log("Selected City:", selectedCityn);
+			console.log("User's City:", userCityn);
+			// Call getDistance with a callback function to handle the result
+			getDistance(userCityn, selectedCityn, function(distance) {
+				updatePrice(distance);
+			});
 		});
-
+	});
 	
-		function getCities(stateId) {
-			// Make AJAX request to retrieve cities
+	function getCities(c_stateId, callback) {
+		// Make AJAX request to retrieve cities
+		$.ajax({
+			url: 'http://localhost:5600/api/v1/states/cities/' + c_stateId,
+			type: 'GET',
+			success: function(data) {
+				// Clear existing options in cities dropdown
+				$('#create_cities').empty();
+				// Add new options for cities
+				$.each(data, function(index, city) {
+					$('#create_cities').append($('<option>', {
+						value: city.id,
+						text: city.name
+					}));
+				});
+				// Call the callback function to indicate that cities have been populated
+				callback();
+			},
+			error: function(xhr, status, error) {
+				// Handle error
+				console.error(error);
+			}
+		});
+	}
+	
+	// Function to retrieve distance between two cities using Google Maps Distance Matrix API
+		function getDistance(origin, destination, callback) {
+			const apiUrl = `http://localhost/dist/${origin}-${destination}`;
 			$.ajax({
-				url: 'http://localhost:5600/api/v1/states/cities/' + stateId,
+				url: apiUrl,
 				type: 'GET',
 				success: function(data) {
-					// Clear existing options in cities dropdown
-					$('#create_cities').empty();
-					// Add new options for cities
-					$.each(data, function(index, city) {
-						$('#create_cities').append($('<option>', {
-							value: city.id,
-							text: city.name
-						}));
-					});
+					const distance = data['distance'];
+					console.log(distance);
+					callback(distance);
 				},
 				error: function(xhr, status, error) {
-					// Handle error
 					console.error(error);
+					callback(null);
 				}
 			});
 		}
-	});
+
+		// Function to calculate price based on distance
+		function calculatePrice(distance) {
+			if (distance < 100) {
+				return 15;
+			} else if (distance < 250) {
+				return 20;
+			} else if (distance < 500) {
+				return 30;
+			} else if (distance < 650) {
+				return 35;
+			} else if (distance < 850) {
+				return 40;
+			} else {
+				return 45;
+			}
+		}
+
+		// Function to update price element
+		function updatePrice(distance) {
+			const priceElement = $('.price');
+			const costElement = $('#parcel_cost');
+			if (distance !== null) {
+				const price = calculatePrice(distance);
+				priceElement.text(price + ' MAD');
+				costElement.val(price);
+			} else {
+				priceElement.text('Error occurred while calculating price.');
+			}
+		}
+
+		// print the selected city in the console.log
+		$('#create_cities').change(function() {
+			var userCity = $('.user_cit').text();
+			var selectedCity = $(this).find(":selected").text();
+			console.log("Selected City:", selectedCity);
+			console.log("User's City:", userCity);
+			// Call getDistance with a callback function to handle the result
+			getDistance(userCity, selectedCity, function(distance) {
+				updatePrice(distance);
+			});
+		});
     });
 
     contact.addEventListener('click', function () {
@@ -220,14 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var user_city = document.querySelector('.user_city');
   
       // Now you can use 'name' and 'address' as needed
-      console.log('Name:', name);
-      console.log('Address:', address);
-      console.log('phone number:', phoneNumber);
-      console.log('city:', city);
-      console.log('tracking:', tracking);
-      console.log('sender name:', username.textContent);
-      console.log('sender phone:', user_phone.textContent);
-      console.log('sender city:', user_city.textContent);
+
   
       const wrapperDiv = document.createElement('div');
       wrapperDiv.innerHTML = '<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Download HTML Example</title> </head> <style> body { width: 35rem; } .container { background-color: white; background-image: none; } .cont{ border: solid; width: 90%; box-sizing: border-box; } .sender { margin: 2rem; display: flex; height: 7rem; border-bottom: 1px solid; } .sender_details{ display: flex; flex-direction: column; margin-left: 2rem; } h2 { margin: 0px; } h3 { margin: 0px 0 5px 0; } .reciever { margin: 2rem; display: flex; border-bottom: 1px solid; } .reciever_details{ display: flex; flex-direction: column; margin-left: 2rem; } .tracking { display: flex; margin-left: 2rem; margin-right: 2rem; /* justify-content: space-around; */ align-items: center; border-bottom: 1px solid; } .num { align-self: flex-start; margin-right: 4rem; } h1 { margin-right: 3rem; } div.logos { background-image: url("/static/img/shipit.jpg"); width: 250px; height: 100px; display: inline-block; background-position: center; margin-left: 13rem; margin-top: 3rem; border: none; } </style> <body> <div class="cont"> <div class="sender"> <h2>Sender:</h2> <div class="sender_details"> <h3>' + username.textContent + '</h3> <h3>' + user_city.textContent + '</h3> <h3>' + user_phone.textContent + '</h3> </div> </div> <div class="reciever"> <h2>Reciever</h2> <div class="reciever_details"> <h3>' + name + '</h3> <h3>' + phoneNumber + '</h3> <h3>' + address + '</h3> <h3>' + city + '</h3> <h3>' + postalcode + '</h3> </div> </div> <div class="tracking"> <h1 class="num">Tracking number</h1> <h1>' + tracking + '</h1> </div> <div class="logos"> </div> </div> </body> </html> '

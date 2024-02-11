@@ -1,6 +1,6 @@
 """ Forms used """
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField, TextAreaField, FloatField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from web_flask import bycpt
 from flask_login import current_user
@@ -57,6 +57,7 @@ class CreateParcel(FlaskForm):
     to_address = StringField('Reciver address', validators=[DataRequired()])
     # to_city = StringField('Reciver city', validators=[DataRequired()])
     parcel_weight = StringField('parcel weight')
+    parcel_cost = FloatField('parcel weight')
     parcel_comments = StringField('comments')
     to_postalcode = StringField('Postal code', validators=[DataRequired(), Length(min=5, max=20)])
     submit = SubmitField('Create')

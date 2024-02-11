@@ -149,3 +149,78 @@ div.cp_p1_p1 {
 	flex-direction: column;
 	margin: 0;
 }
+
+.user_cit {
+	display: none;
+}
+
+div.ccp2_p2 {
+	display: flex;
+	border: none;
+	margin: 0;
+}
+div.cp2p1 {
+	display: flex;
+	border: none;
+	flex-direction: column;
+	margin: 0px 0 0 0;
+}
+
+div.cost {
+	border: none;
+	margin-left: 2rem;
+	display: block;
+	height: 3rem;
+	margin-top: 10px;
+	width: 19.5rem;
+	height: 2rem;
+}
+
+.cost div {
+	display: inline-block;
+	margin-left: 2rem;
+	border: none;
+	font-family: "Fira Sans", sans-serif;
+	font-size: 20px;
+	margin-top: 1.5rem;
+}
+
+.cost .price {
+	float: right;
+}
+
+
+div.type_cost {
+	display: flex;
+	border: none;
+	margin: 0;
+}
+
+.type_cost div {
+	border: none;
+}
+
+div.type_par {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	/* width: 17rem; */
+}
+
+.parcel_type{
+	height: 2rem;
+	width: 17rem;
+	margin-left: 2rem ;
+	margin-top: 5px;
+	border: 2px solid rgb(215,68,59);
+	border-radius: 5px;
+	font-size: 17px;
+	font-family: "Fira Sans", sans-serif;
+	margin-bottom: 1rem;
+}
+
+
+.parcel_type:focus {
+	border: 2px solid rgb(215,68,59);
+	border-radius: 5px;
+}

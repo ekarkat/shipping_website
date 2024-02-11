@@ -8,7 +8,7 @@ from models.state import State
 storage.reload()
 
 morocco_state = [
-    {'name': 'Chaouia-Ouardigha', 'cities': ['Settat', 'Khouribga', 'Berrechid', 'Beni Mellal', 'Khénifra', 'Boujniba', 'Fquih Ben Salah', 'Benslimane', 'El Kelâa des Sraghna', 'Sidi Bennour', 'Dar Bel Amri']},
+    {'name': 'Chaouia-Ouardigha', 'cities': ['Settat', 'Berrechid', 'Beni Mellal', 'Khénifra', 'Boujniba', 'Fquih Ben Salah', 'Benslimane', 'El Kelâa des Sraghna', 'Sidi Bennour', 'Dar Bel Amri']},
     {'name': 'Doukkala-Abda', 'cities': ['Safi', 'El Jadida', 'Azemmour', 'Khouribga', 'Oualidia', 'Sidi Bennour']},
     {'name': 'Fès-Boulemane', 'cities': ['Fès', 'Meknès', 'Sefrou', 'Taza', 'El Hajeb', 'Boulemane']},
     {'name': 'Gharb-Chrarda-Beni Hssen', 'cities': ['Kénitra', 'Sidi Kacem', 'Sidi Slimane', 'Sidi Yahya El Gharb', 'Sidi Smaïl', 'Sidi Allal El Bahraoui']},

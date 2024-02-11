@@ -115,9 +115,11 @@
 				<div class="error"> {{create_form.to_address.errors[0] }} </div>
 			{% endif %}
 
+			<div class="user_cit">{{current_user.user_city}}</div>
+
 			<div class="ccp2">
 				<div class="cp2_state">
-					<label for="states">Region</label>
+					<label for="create_states">Region</label>
 					<select name="states" id="create_states" class="create_states" required>
 						{% for state in states|sort(attribute="name") %}
 							<option value={{state.id}}>{{state.name}}</option>
@@ -125,23 +127,41 @@
 					</select>
 				</div>
 				<div class="cp2_state">
-					<label for="cities">City</label>
+					<label for="create_cities">City</label>
 					<select name="cities" id="create_cities" class="create_cities" required>
 					</select>
 				</div>
 			</div>
 
-			{{create_form.to_postalcode.label}}
-			{{create_form.to_postalcode(placeholder="Enter the reciever city")}}
-			{% if create_form.to_postalcode.errors %}
-				<div class="error"> {{create_form.to_postalcode.errors[0] }} </div>
-			{% endif %}
-
-			{{create_form.parcel_weight.label}}
-			{{create_form.parcel_weight(placeholder="Enter the parcel weight")}}
-			{% if create_form.parcel_weight.errors %}
-				<div class="error"> {{create_form.parcel_weight.errors[0] }} </div>
-			{% endif %}
+			<div class="ccp2_p2">
+				<div class="cp2p1">
+					{{create_form.to_postalcode.label}}
+					{{create_form.to_postalcode(placeholder="Enter the reciever city")}}
+					{% if create_form.to_postalcode.errors %}
+						<div class="error"> {{create_form.to_postalcode.errors[0] }} </div>
+					{% endif %}
+				</div>
+				<div class="cp2p1">
+					{{create_form.parcel_weight.label}}
+					{{create_form.parcel_weight(placeholder="Enter the parcel weight")}}
+					{% if create_form.parcel_weight.errors %}
+						<div class="error"> {{create_form.parcel_weight.errors[0] }} </div>
+					{% endif %}
+				</div>
+			</div>
+			<div class="type_cost">
+				<div class="type_par">
+					<label for="parcel_type">Delivery type</label>
+					<select name="parcel_type" id="parcel_type" class="parcel_type" required>
+						<option value="express">Express</option>
+						<option value="standard">Standard</option>
+					</select>
+				</div>
+				<div class="cost">
+					<div>Delivery cost :</div>
+					<div class="price"> 30MAD</div>
+				</div>
+			</div>
 
 			{{create_form.parcel_comments.label}}
 			{{create_form.parcel_comments(placeholder="Comments")}}
@@ -149,6 +169,7 @@
 				<div class="error"> {{create_form.parcel_comments.errors[0] }} </div>
 			{% endif %}
 
+			{{create_form.parcel_cost(style="display: none;")}}
 			{{create_form.submit(placeholder="Create", class="submit_b")}}
 		</form>
 	</div>

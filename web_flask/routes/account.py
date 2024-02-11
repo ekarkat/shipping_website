@@ -5,10 +5,7 @@ from web_flask import app
 from flask_login import login_user, login_required, current_user
 from web_flask.forms import CreateParcel, UserProfile, ContactUs
 import models
-from flask_cors import CORS
 
-
-CORS(app, origins="0.0.0.0")
 
 @app.route("/account/", methods=["GET", "POST"])
 @login_required
@@ -56,6 +53,8 @@ def account():
             "to_state" : state,
             "to_city" : city,
             "to_postalcode" : create_form.to_postalcode.data,
+            "parcel_type" : request.form['parcel_type'],
+            "parcel_cost" : create_form.parcel_cost.data,
             "parcel_weight" : create_form.parcel_weight.data,
             "parcel_comments" : create_form.parcel_comments.data,
         }

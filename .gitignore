@@ -8,6 +8,9 @@
 
 xx/
 
+.gitignore
 
 _test*
+test*
+tmux*
 __pycache__

@@ -5,8 +5,11 @@ from web_flask import app, mail
 from flask_login import login_user, login_required, current_user
 from web_flask.forms import CreateParcel, UserProfile, ContactUs
 import models
+
 from flask_cors import CORS
 from flask_mail import Message
+
+
 
 @app.route("/account/", methods=["GET", "POST"])
 @login_required

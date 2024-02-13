@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 """Registarion form rout"""
 from flask import render_template, url_for, request, redirect
-from models import storage
+
 
 from web_flask import app
 
 
 @app.route("/")
 def home():
+    from models import storage
     total_shipments = storage.count_parcels()
     total_clients = storage.count_users()
     return render_template("home.html", total_shipments=total_shipments, total_clients=total_clients)

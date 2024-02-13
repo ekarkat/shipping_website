@@ -1,0 +1,240 @@
+{% extends "layout.html" %}
+{% block css %}
+<link href="{{ url_for('static', filename='css/service.css') }}" rel="stylesheet" type="text/css">
+
+{% endblock css %}
+
+{% block content %}
+<main>
+    <!-- Introduction -->
+    <section id="introduction">
+        <h2 id="title">About Our Delivery Services</h2>
+        <p id="description">At ShipIt, we offer a range of delivery options to suit your needs. Whether you require same-day delivery for urgent shipments or prefer the affordability of standard shipping, we've got you covered.</p>
+    </section>
+
+    <!-- Description of Each Service -->
+    <section id="delivery-service">
+        <h2>Our Delivery Options</h2>
+        <div class="delivery-services">
+            <div class="service">
+                <h3>Same Day Delivery</h3>
+                <h4>Instant Delivery Solutions for Urgent Needs</h4>
+                <p>No time to waste? Our same-day delivery service ensures your packages reach their destination within hours. Say goodbye to long waits and hello to instant gratification. Experience the ultimate convenience with our lightning-fast same-day delivery.</p>
+                <ul>
+                    <li>
+                        <h4>Pricing</h4>
+                        <p>Experience instant gratification with our same-day delivery service, starting at [insert pricing here] per parcel. Pricing is tailored to accommodate the immediacy of same-day shipping requests and may vary based on factors such as package size, weight, and delivery distance.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>Duration</h4>
+                        <p> With same-day delivery, parcels are delivered within hours of placing your order, offering unparalleled convenience for urgent shipments. This lightning-fast service ensures prompt delivery to your desired location within Morocco, eliminating the need for lengthy wait times and providing instant satisfaction.</p>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="service">
+                <h3>Express Delivery</h3>
+                <h4>Swift & Dependable Express Shipping</h4>
+                <p>Need it fast? Our express delivery service guarantees lightning-fast shipping across Morocco. With expedited handling and advanced tracking, your urgent parcels arrive swiftly and securely. Experience unparalleled speed and efficiency with our express option.</p>
+                <ul>
+                    <li>
+                        <h4>Pricing</h4>
+                        <p>For those who need faster delivery, our express delivery service provides expedited shipping options starting at [insert pricing here] per parcel.
+                            The pricing structure may vary depending on factors such as package size, weight, and destination.</p>
+                    </li>
+                    <li>
+                        <h4>Duration</h4>
+                        <p> With express delivery, packages are prioritized for swift transportation and typically arrive within 1-2 business days. This expedited timeframe ensures timely delivery across Morocco, catering to urgent shipping needs with speed and efficiency.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="service">
+                <h3>Standard Shipping</h3>
+                <h4>Efficient & Reliable Shipping Across Morocco</h4>
+                <p>Enjoy cost-effective shipping without compromising on quality. Our standard delivery service ensures your packages reach their destination safely and on time. Trust our extensive network and professional team for hassle-free shipping every time.</p>
+                <ul>
+                    <li>
+                        <h4>Pricing</h4>
+                        <p>Our standard delivery service offers cost-effective shipping options, starting at 10DH/KG per parcel.
+                            Pricing may vary based on factors such as the size, weight, and destination of the package.</p>
+                    </li>
+                    <li>
+                        <h4>Duration</h4>
+                        <p>With standard delivery, packages typically arrive within 3-5 business days from the date of shipment.
+                            This timeframe allows for efficient handling and transportation across Morocco, ensuring reliable delivery to your desired destination.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="comparison">
+        <h2>Compare Our Delivery Services</h2>
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Delivery Time</th>
+                <th>Cost</th>
+                <th>Coverage Area</th> -->
+                <!-- Add more columns as needed -->
+            <!-- </tr>
+            <tr>
+                <td>Same Day Delivery</td>
+                <td>Within the same day</td>
+                <td>Lower</td>
+                <td>Local area</td> -->
+                <!-- Add more rows with details for each service -->
+            <!-- </tr> -->
+            <!-- Add more rows for other delivery options -->
+        <!-- </table>
+    </section>-->
+
+    <!-- What Our Customers Say -->
+    <section id="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div id="testimonials-wrapper">
+            <div id="testimonials-container">
+                <div class="testimonial">
+                    <div class="testimonial-image">
+                        <img src="john_doe_photo.jpg" alt="John Doe">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"ShipIt made shipping my packages so easy! I used their express delivery service and received my items right on time. Highly recommended!"</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-image">
+                        <img src="jane_smith_photo.jpg" alt="Jane Smith">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"I've been using ShipIt for all my shipping needs and I'm always impressed with their standard shipping service. Reliable and affordable!"</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-image">
+                        <img src="sarah_johnson_photo.jpg" alt="Sarah Johnson">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"ShipIt has been a lifesaver for my business! I sell mugs all over Morocco, and their shipping service has been reliable and efficient. It's helped me grow my business without worrying about logistics."</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-image">
+                        <img src="michael_brown_photo.jpg" alt="Michael Brown">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"I had an urgent need to send important documents at the last minute, and ShipIt's same-day delivery option saved the day! Their quick service and reliable delivery ensured my documents reached their destination on time. Thank you, ShipIt!"</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more testimonials as needed -->
+        </div>
+    </section>
+    
+
+    <!-- Call-to-Action -->
+    <section id="cta">
+        <h2>Ready to Ship?</h2>
+        <p>Get started today! Login and choose your preferred delivery option!</p>
+        <a href="{{ url_for('login') }}" class="btn">Get Started</a>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3 class="question"><i class="ri-question-fill"></i> What are your delivery options?</h3>
+            <p class="answer">We offer three types of delivery: Same Day Delivery, Express Delivery, and Standard Shipping. You can choose the option that best suits your needs.</p>
+        </div>
+        <div class="faq-item">
+            <h3 class="question"><i class="ri-question-fill"></i> How can I track my order?</h3>
+            <p class="answer">Once your order is processed, we'll provide you with a tracking number via email or SMS. You can use this tracking number to monitor the status of your delivery on our website.</p>
+        </div>
+        <div class="faq-item">
+            <h3 class="question"><i class="ri-question-fill"></i> What are the delivery times?</h3>
+            <p class="answer">Delivery times vary depending on the delivery option you choose. Same Day Delivery and Express Delivery offer faster delivery times, while Standard Shipping may take longer. You can find estimated delivery times during the checkout process.</p>
+        </div>
+        <!-- Add more FAQ items as needed -->   
+    </section>
+</main>
+<script>
+    function highlightText() {
+        const title = document.getElementById("title");
+        const description = document.getElementById("description");
+
+        title.classList.add("highlight");
+        description.classList.add("highlight");
+
+        setTimeout(() => {
+            title.classList.remove("highlight");
+            description.classList.remove("highlight");
+        }, 2000);
+    }
+
+    // Call the function after page load
+    window.onload = highlightText;
+document.addEventListener("DOMContentLoaded", function() {
+    const serviceDivs = document.querySelectorAll(".service");
+
+    serviceDivs.forEach(service => {
+        const h3 = service.querySelector("h3");
+        const firstParagraph = service.querySelector("p");
+        const ul = service.querySelector("ul");
+
+        // Hide ul initially
+        ul.style.display = "none";
+
+        // Hide ul and p elements when the service div is clicked
+        service.addEventListener("click", function() {
+            if (ul.style.display === "none") {
+                ul.style.display = "block";
+                firstParagraph.style.display = "block";
+            } else {
+                ul.style.display = "none";
+                firstParagraph.style.display = "none";
+            }
+        });
+
+        // Prevent ul and p elements from hiding when clicked inside service div
+        ul.addEventListener("click", function(event) {
+            event.stopPropagation();
+        });
+        firstParagraph.addEventListener("click", function(event) {
+            event.stopPropagation();
+        });
+
+        // Hide ul and p elements when user clicks outside the service div
+        document.addEventListener("click", function(event) {
+            if (!service.contains(event.target)) {
+                ul.style.display = "none";
+                firstParagraph.style.display = "none";
+            }
+        });
+    });
+});
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const testimonialsSection = document.getElementById("testimonials-wrapper");
+    testimonialsSection.addEventListener("wheel", function (e) {
+        if (e.deltaY !== 0) {
+            e.preventDefault();
+            testimonialsSection.scrollLeft += e.deltaY;
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+        const questions = document.querySelectorAll('.question');
+        
+        questions.forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                answer.classList.toggle('show');
+            });
+        });
+    });
+</script>
+
+{% endblock %}

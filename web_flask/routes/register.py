@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Registarion form route"""
 
-from flask import render_template, url_for, request
+from flask import render_template, url_for, request, redirect
 from web_flask import app, bycpt
 from web_flask.forms import RegisterForm, LoginForm
 from flask_login import current_user
@@ -35,7 +35,7 @@ def register():
 
         new_user = User(**imput)
         new_user.save()
-        return (url_for('login'))
+        return redirect(url_for('login'))
 
     states = []
     for key, value in models.storage.all("State").items():

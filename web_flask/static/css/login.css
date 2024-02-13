@@ -137,6 +137,10 @@ input {
 	accent-color: var(--first-color-alt)/*rgb(235, 42, 32)*/;
 
 }
+small :hover{
+	color: var(--first-color-alt);
+	cursor: pointer;
+}
 
 .l_rememberme {
 	clear: both;

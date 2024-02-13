@@ -7,7 +7,6 @@
 	filter: opacity(1);
 	background-repeat: no-repeat, no-repeat;
 	background-position: center, center;
-	margin-bottom: 8rem;
 }
 .slider .over_slide {
 	border: none;
@@ -45,102 +44,243 @@
 	margin: 15px 0;
 
 }
+
+
+
 .sec {
-	display: flex;
-	justify-content: space-evenly;
-	width: 100%;
-	margin-bottom: 10rem;
+	margin-top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
 }
+
 .sec div {
-	width: 100%;
-	/* flex-grow: 1; */
-	/* min-height: 25rem; */
-	text-align: center;
-	margin: 0.5rem 0;
-	/* border: solid; */
-	font-family: "Roboto",sans-serif;
+    width: 100%;
+    margin: 0rem 2rem 0rem 2rem;
+    font-family: "Roboto", sans-serif;
 }
-.sec .s1p1 {
-	border: none;
-	min-height: 30rem;
-	width: 50rem;
-	/* margin-left: 2rem; */
-	background-image: url('/static/img/s1p1.jpg');
-	background-repeat: no-repeat;
-	background-size:contain;
-	background-position: center center;
-}
-.sec .s1p2 {
-	width: 50rem;
-	border: none;
-	text-align: left;
-	/* margin-left: 2rem; */
-	display: inline-block;
-	box-sizing: border-box;
-	padding-right: 15rem;
-}
-.s1p2 h6 {
-	font-size: 16px;
-	color: #00CCEC;
-	margin: 35px 0 20px 0;
-}
-.s1p2 h1 {
-	font-size: 40px;
-	margin: 1px 0 50px 0;
-}
-.s1p2 p {
-	font-size: 18px;
-}
-.sec .s1p2 .p2a1 {
+
+.achievement {
 	display: flex;
+	align-items: center;
 }
-.sec .s1p2 .p2a1 div{
-	display: inline-block;
-	width: 15rem;
-	height: 9rem;
-	text-align: left;
-	margin: 0 2rem 0 0;
+
+@media only screen and (max-width: 1100px) {
+	.over_slide {
+        width: 100%;
+    }
+
+    .sec {
+        display: grid;
+    }
+
+	.achivement {
+		align-items: center;
+	}
+
+	.stand_ship, .express_delivery, .same_day_ship{
+		width:fit-content ;
+		margin: 2rem;
+	}
+    
+    .s1p1,
+    .s1p2,
+	.services{
+        flex: 2;	
+    }
+	.services .Shippement{
+		width:fit-content ;
+		margin: 2rem;
+	}
+	.services .Clients{
+		width: fit-content;
+		margin: 2rem;
+	}
+
+	.services{
+		flex-direction: column;
+		align-items: center;
+		display: flex;
+		justify-content: space-evenly;
+		min-width: 400px;
+		width: fit-content;
+	}
+    .s1p1 {
+        width: fit-content;
+    }
+    .sec .s1p2{
+        padding: 0; /* Remove padding */
+    }
 }
-.s1p2 .p2a1 h5, .s1p2 .p2a1 p{
-	display: inline-block;
-	margin: 0 0;
-	text-align: left;
+
+.sec .s1p1 {
+    flex: 1;
+    min-height: 50rem;
+    min-width: 40rem;
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/img/s1p1.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
-.sec .s1p2 .p2a1 .p2a1_png {
-	display: inline-block;
-	/* border: solid black; */
-	width: 100%;
-	height: 50px;
+
+.s1p2 {
+    flex: 2;
+    width: 80%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    
+    /* padding: 10rem 0; Adjusted padding */
+}
+
+.s1p2 h6 {
+    font-size: 16px;
+    color: #00CCEC;
+    /* margin: 35px 0 20px 0; */
+}
+
+.s1p2 h1 {
+    font-size: 40px;
+    /* margin: 1px 0 20px 0; Adjust margin as needed */
+}
+
+.s1p2 h5 {
+	font-size: 24px;
 	margin-bottom: 10px;
+	font-weight: bold;
 }
-.a1b1_png {
-	background-image: url('/static/img/a1.png');
-	background-repeat: no-repeat;
-	background-position: -5px center;
+.s1p2 i {
+	color: var(--first-color-alt);
+	font-size: 60px;
 }
-.a1b2_png {
-	background-image: url('/static/img/a2.png');
-	background-repeat: no-repeat;
-	background-position: -5px center;
+
+.s1p2 p {
+    font-size: 23px;
+	text-align: justify;
+    margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.sec .s1p2 .p2a1 {
+    display: flex;
+    justify-content: center;
+	margin-bottom: 2rem;
+    /* flex-wrap: wrap;  */
+}
+
+.sec .s1p2 .p2a1 div {
+	min-width: 230px;
+    width: 45%; /* Adjust width as needed */
+    margin: 1rem; /* Adjust margin as needed */
+}
+
+.sec .s1p2 .p2a1 .p2a1_png {
+    width: 100%;
+    height: auto; /* Automatically adjust height */
+    margin-bottom: 10px;
+}
+
+.achievement {
+	display: flex;
+	padding: 0px 30px;
+	justify-content: space-around;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.achievement.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.Shippement .Clients{
+	border-radius: 14px;
+	border-color: yellow;
+}
+.Shippement h4{
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: white;
+	text-align: center;
+}
+.Clients h4{
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: white;
+	text-align: center;
+}
+
+.Shippement div	{
+	display: inline-flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: space-evenly
+}
+
+.Clients div{
+	display: inline-flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: space-evenly
 }
 
 
 
+
+.services div{
+	border-radius: 10px;
+	width: 400px;
+	min-width: 250px;	
+}
+
+.services span{
+	font-size: larger;
+	font-weight: bolder;
+	color: aliceblue;
+	margin-top: 2rem;
+	width: 50px;
+	text-align: center;
+}
+
+.services .Shippement{
+	background-color: rgb(0, 41, 88);
+}
+
+.services .Clients{
+	background-color: rgb(255, 210, 63);
+}
 .services {
 	display: flex;
 	padding: 0px 30px;
 	justify-content: space-around;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+.service-container{
+	padding-top: 20px;
+	align-items: center;
 }
 
 .service-container h1{
 	font-size: 36px;
-	color: #333;
+	text-align: center;
+}
+
+.over_slide h1{
+	font-size: 36px;
+	text-align: center;
+}
+
+.services h1{
+	font-size: 36px;
 	text-align: center;
 }
 
 .services h5{
 	font-size: 24px;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 	color: rgb(215,68,59);
 	text-align: center;
 }
@@ -152,10 +292,19 @@
 	text-align:start;
 }
 
+.services h3{
+	font-size: 30px;
+	font-weight: bolder;
+	color: white;
+	text-align:start;
+}
+
+
+
 .services a{
-	display: inline;
 	background-color: rgb(215,68,59);
 	color: #fff;
+	margin: 3rem 0;
 	padding: 10px 20px;
 	border-radius: 18px;
 	text-decoration: none;
@@ -168,6 +317,6 @@
 
 .stand_ship, .express_delivery, .same_day_ship{
 	width: 450px;
-	margin-bottom: 50px;
 	padding-right: 50px;
+	justify-content: space-around;
 }

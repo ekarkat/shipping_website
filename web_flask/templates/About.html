@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block css %}
+<link href="{{ url_for('static', filename='css/about.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet" type="text/css">
+
+{% endblock css %}
+
+{% block content %}
+<section class="about-section">
+    <div class="about-content">
+        <div class="about-box">
+            <div class="box">
+                <h2>Who We Are</h2>
+            <p>ShipIt is a leading logistics and shipping company committed to delivering excellence in every shipment. Our mission is to provide efficient, reliable, and cost-effective shipping solutions for businesses and individuals worldwide.</p>
+            </div>
+            <div class="box"><h2>Our Team</h2>
+                <p>Our team consists of experienced professionals dedicated to ensuring the smooth operation of our logistics services. From our customer service representatives to our warehouse staff and delivery drivers, everyone at ShipIt is committed to providing exceptional service.</p></div>
+        </div>
+        <div class="about-box">
+            <h2>Our Values</h2>
+            <ul>
+                <li><strong>Reliability:</strong> We deliver on our promises, ensuring timely and secure shipments.</li>
+                <li><strong>Integrity:</strong> We conduct our business with honesty and transparency, building trust with our customers.</li>
+                <li><strong>Innovation:</strong> We continuously seek innovative solutions to enhance our services and exceed customer expectations.</li>
+                <li><strong>Customer Focus:</strong> We prioritize the needs of our customers, providing personalized service and support.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="achivement" id="achivement active-link">
+    <div class="services">
+        <h1>Some Facts</h1>
+        <div class="Shippement" id="Shippement">
+            <h4>Complete Shippements</h4>
+            <div class="achivement_shippement" id="shipmentCount">
+                <span id="totalShipments">{{ total_shipments }}</span>
+                <h3>Shippements</h3>
+            </div>
+        </div>
+        <div class="Clients" id="clients">
+            <h4>Our clients</h4>
+            <div class="achivement_clients" id="clientsCount">
+                <span id="numClients">{{ total_clients }}</span>
+                <h3>Clients</h3>
+            </div>
+        </div>
+    </div>
+
+</section>
+<section class="service-container" id="service-container active-link s1p2">
+    <h1>Our services</h1>
+    <div class="services">
+        <div class="stand_ship">
+            <h5>Standard Shipping</h5>
+            <!-- <img src="../static/img/same-day.jpg" width=450 alt="same-day"> -->
+            <a href="{{ url_for('service') }}">Learn More</a>
+            <P>Our standard shipping service is perfect for those who prioritize cost-effectiveness and are flexible with delivery times. With ShipIt's standard shipping, your packages are handled with care and delivered efficiently to their destination.</P>
+            
+        </div>
+        <div class="express_delivery">
+            <h5>Express Delivery</h5>
+            <!-- <img src="../static/img/same-day.jpg" width=450 alt="same-day"> -->
+            <a href="{{ url_for('service') }}">Learn More</a>
+            <p>Need your package delivered quickly? Our express delivery service ensures that your items reach their destination in the shortest possible time. Whether it's across town or across the country, ShipIt's express delivery gets it there fast and reliably.</p>
+
+        </div>
+        <div class="same_day_ship">
+            <h5>Same Day Delivery</h5>
+            <!-- <img src="../static/img/same-day.jpg" width=450 alt="same-day"> -->
+            <a href="{{ url_for('service') }}">Learn More</a>
+            <p>Urgency is our specialty! ShipIt's same-day delivery service guarantees lightning-fast delivery for those time-sensitive shipments. Whether it's a last-minute gift or an urgent business document, we'll ensure it gets there on time, every time.</p>
+        </div>
+</section>
+{% endblock content %}

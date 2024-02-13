@@ -54,6 +54,6 @@ def reset_token(token):
         setattr(user, "user_password", hashed_pass)
         user.save()
         flash('Your password has been updated! You are now able to login')
-        return render_template("home.html")
+        return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
 

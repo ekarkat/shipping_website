@@ -1,0 +1,270 @@
+
+#introduction {
+    text-align: center;
+    padding: 50px 0;
+    border-radius: 20px;
+    background-color: #f7f5f5;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#title {
+    font-size: 2.5em;
+    color: var(--first-color-alt);
+    margin-bottom: 20px;
+}
+
+
+
+#description {
+    font-size: 1.2em;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.highlight {
+    animation: highlightText 3s ease infinite alternate;
+}
+
+@keyframes highlightText {
+    0% { color: rgb(23, 93, 150); }
+    100% { color: var(--first-color-alt); }
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: flex;
+    margin-right: 20px;
+}
+
+/* nav ul li a {
+    color: #e04848;
+    text-decoration: none;
+} */
+
+
+section {
+    margin-bottom: 40px;
+    justify-content: space-around;
+}
+
+
+.delivery-services {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+.service {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin: 20px;
+    width: fit-content;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.service:hover {
+    cursor: pointer;
+    background-color: lightgray; /* Change color on hover */
+    transform: scale(1.05); /* Zoom in a little on hover */
+}
+
+
+.service.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.blurred {
+    filter: blur(3px);
+    pointer-events: none;
+}
+
+
+
+
+h2 {
+    color: var(--first-color-alt);
+    text-align: center;
+    margin-top: 50px; /* Adjust top margin as needed */
+    margin-bottom: 30px; /* Adjust bottom margin as needed */
+}
+
+#testimonials-wrapper {
+
+    overflow-x: scroll;
+    height: 350px;
+    background-color: #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0px 8px gray;
+}
+
+#testimonials-container {
+    margin-top: 25px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    display: inline-flex;
+    border-radius: 10px;
+
+    background-color: #ccc;
+    
+    /* margin-left: 130px;
+    margin-right: 130px; */
+    
+    
+}
+
+
+
+.testimonial {
+    width: 400px; /* Adjust width as needed */
+    margin: 10px;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.testimonial-content {
+    
+    margin-bottom: 10px;
+    max-width: 400px; /* Adjust maximum width as needed */
+    word-wrap: break-word; /* Wrap long words to prevent overflow */
+    white-space: normal; /* Enable scrolling if content exceeds maximum width */
+}
+
+.testimonial-image img {
+    width: 100px; /* Adjust image width as needed */
+    height: auto;
+}
+
+
+/* Call-to-Action Section */
+#cta {
+    text-align: center;
+}
+
+#cta p{
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    background-color: rgb(215,68,59);
+
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--first-color-alt);
+}
+
+/* #comparison {
+    margin-top: 40px;
+}
+
+#comparison h2 {
+    color: #333;
+}
+
+#comparison table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#comparison th, #comparison td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+#comparison th {
+    background-color: #f2f2f2;
+} */
+
+/* Testimonials Section */
+#testimonials {
+    margin-top: 40px;
+    margin-left: 90px;
+    margin-right: 90px;
+
+}
+
+
+
+.testimonial {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 400px; /* Adjust width as needed */
+    margin: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--first-color-alt);
+}
+
+.testimonial p:first-child {
+    margin-bottom: 10px;
+}
+
+.faq-section {
+    margin-top: 50px;
+}
+
+/* i:hover{
+    cursor: pointer;
+    color: rgb(23, 93, 150);
+} */
+
+.faq-item {
+    margin-bottom: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+/* #D7443B */
+.question:hover{
+    
+    color: var(--first-color-alt);
+    transition: color ease 1ms;    
+}
+i:hover{
+    /*  */
+    color: var(--first-color-alt);
+    transition: color ease 1ms;    
+}
+
+.question, i {
+    color:  rgb(23, 93, 150);
+    font-weight: bold;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.answer {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.answer.show {
+    display: block;
+}

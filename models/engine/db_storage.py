@@ -5,6 +5,9 @@ from models.base_model import BaseModel, Base
 from models.user import User
 from models.agent import Agent
 from models.parcel import Parcel
+
+from sqlalchemy import create_engine, func
+
 from models.city import City
 from models.state import State
 from sqlalchemy import create_engine
@@ -94,6 +97,14 @@ class DBStorage():
         if len(result) == 0:
             return None
         return (result[0])
+    
+    def count_parcels(self):
+        """Returns the total number of parcels"""
+        return self.__session.query(func.count(Parcel.id)).scalar()
+    
+    def count_users(self):
+        """Returns the total number of users"""
+        return self.__session.query(func.count(User.id)).scalar()
 
     def new(self, obj):
         """Add obj to database"""

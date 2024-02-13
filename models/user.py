@@ -29,8 +29,10 @@ class User(BaseModel, Base, UserMixin):
     user_email = Column(String(128), nullable=False)
     user_password = Column(String(128), nullable=False)
     user_phone_number = Column(String(32), nullable=False)
+    user_state = Column(String(60), nullable=False)
     user_city = Column(String(60), nullable=False)
     user_address = Column(String(1024), nullable=False)
+    user_postalcode = Column(String(12), nullable=False)
     user_birth_date = Column(String(10), nullable=True)
     user_parcels = relationship("Parcel", backref="user_parcels", cascade="all, delete")
 
@@ -40,10 +42,12 @@ class User(BaseModel, Base, UserMixin):
         user_details = {
             "from_name" : self.user_full_name,
             "from_phone_number" : self.user_phone_number,
+            "from_state" : self.user_state,
             "from_city" : self.user_city,
             "parcel_user_id" : self.id,
             "parcel_tracking_number": track_num,
-            "parcel_status": "Ready for Pickup"
+            "parcel_status": "Ready for Pickup",
+			"parcel_history": "Ready for Pickup"
             }
         details ={**user_details, **kwargs}
         parcel = Parcel(**details)

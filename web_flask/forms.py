@@ -1,6 +1,6 @@
 """ Forms used """
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, DateField, TextAreaField, FloatField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from web_flask import bycpt
 from flask_login import current_user
@@ -9,7 +9,7 @@ from flask_login import current_user
 class RegisterForm(FlaskForm):
     # Register form class
     full_name = StringField('Full name', validators=[DataRequired(), Length(min=3, max=60)])
-    city = StringField('City', validators=[DataRequired(), Length(min=3, max=20)])
+    address = StringField('Address', validators=[DataRequired(), Length(min=3, max=124)])
     address = StringField('Address', validators=[DataRequired(), Length(min=3, max=248)])
     phone = StringField('Phone number', validators=[DataRequired(), Length(min=3, max=20)])
     postal_code = StringField('Postal code', validators=[DataRequired(), Length(min=3, max=20)])
@@ -54,8 +54,9 @@ class CreateParcel(FlaskForm):
     to_name = StringField('Reciver name', validators=[DataRequired()])
     to_phone_number = StringField('Reciver phone number', validators=[DataRequired()])
     to_address = StringField('Reciver address', validators=[DataRequired()])
-    to_city = StringField('Reciver city', validators=[DataRequired()])
+    # to_city = StringField('Reciver city', validators=[DataRequired()])
     parcel_weight = StringField('parcel weight')
+    parcel_cost = FloatField('parcel weight')
     parcel_comments = StringField('comments')
     to_postalcode = StringField('Postal code', validators=[DataRequired(), Length(min=5, max=20)])
     submit = SubmitField('Create')
@@ -64,7 +65,7 @@ class CreateParcel(FlaskForm):
 class UserProfile(FlaskForm):
     # Create a parcel form:
     full_name = StringField('Full name')
-    city = StringField('City', validators=[DataRequired(), Length(min=3, max=20)])
+    # city = StringField('City', validators=[DataRequired(), Length(min=3, max=20)])
     address = StringField('Address', validators=[DataRequired(), Length(min=3, max=124)])
     phone = StringField('Phone number', validators=[DataRequired(), Length(min=3, max=20)])
     postal_code = StringField('Postal code', validators=[])
@@ -85,6 +86,48 @@ class ContactUs(FlaskForm):
     submit = SubmitField('Send email')
 
 
+# agent forms agent login and other forms
+
+class AgentLogin(FlaskForm):
+    # Login form class
+    email = StringField('Email', validators=[DataRequired(), Email()])  # Correct function name
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
+    rememberme = BooleanField('Remember me')
+    submit = SubmitField('Log in')
+
+    def validate_email(self, email):
+        from models import storage
+        agent = storage.agent_eamil(email.data)
+        if not agent:
+            raise ValidationError("Email doesn't exist")
+        
+    # def validate_password(form, password):
+    #     from models import storage
+    #     agent = storage.agent_eamil(form.email.data)
+    #     if agent:
+    #         passw = agent.agent_password
+    #         if not bycpt.check_password_hash(agent.user_password, password.data):
+    #             raise ValidationError('Wrong password')
+
+
+class PickUp(FlaskForm):
+    # Login form class
+    tracking_number = StringField('Tracking Number', validators=[DataRequired(), Length(min=10)])  # Correct function name
+    submit = SubmitField('Submit')
+
+    def validate_tracking_number(self, tracking_number):
+        from models import storage
+        parcel = storage.parcel_track(tracking_number.data)
+        if not parcel:
+            raise ValidationError("Tracking number doessn't exist")
+
+    # def validate_password(form, password):
+    #     from models import storage
+    #     agent = storage.agent_eamil(form.email.data)
+    #     if agent:
+    #         passw = agent.agent_password
+    #         if not bycpt.check_password_hash(agent.user_password, password.data):
+    #             raise ValidationError('Wrong password')
 class RequestResetForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Request Password Reset')

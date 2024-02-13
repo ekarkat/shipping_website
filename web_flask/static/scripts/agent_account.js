@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const history = document.querySelector('.history');
     const delivery = document.querySelector('.delivery');
     const contact = document.querySelector('.contact');
-	var panelContent = document.getElementById("panel").innerHTML;
+	var panelContent = document.getElementById("cpanel").textContent;
 
-	console.log(panelContent)
+
 
 	$(document).ready(function() {
 		var stateId = ''; // Initialize stateId variable
@@ -97,34 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		delivery_panel.style.display = 'none';
 		contactus_panel.style.display = 'none';
 
-	  stateId = '';
-	  		$('#states').change(function() {
-			stateId = $(this).val();
-			getCities(stateId);
-		});
-		function getCities(stateId) {
-			// Make AJAX request to retrieve cities
-			$.ajax({
-				url: 'http://localhost:5600/api/v1/states/cities/' + stateId,
-				type: 'GET',
-				success: function(data) {
-					// Clear existing options in cities dropdown
-					$('#cities').innerHTML="";
-					$('#cities').empty();
-					// Add new options for cities
-					$.each(data, function(index, city) {
-						$('#cities').append($('<option>', {
-							value: city.id,
-							text: city.name
-						}));
-					});
-				},
-				error: function(xhr, status, error) {
-					// Handle error
-					console.error(error);
-				}
-			});
-		}
     });
   
     create.addEventListener('click', function () {
@@ -148,160 +120,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	delivery_panel.style.display = 'none';
 	contactus_panel.style.display = 'none';
 
-	var c_stateId = ''; // Initialize stateId variable
-	$('#create_states').change(function() {
-		c_stateId = $(this).val();
-		getCities(c_stateId, function() {
-			// Callback function to be executed after cities are retrieved and dropdown is populated
-			var userCityn = $('.user_cit').text();
-			const firstOption = document.querySelector('#create_cities option:first-child');
-			var selectedCityn = firstOption.textContent;
-			console.log("Selected City:", selectedCityn);
-			console.log("User's City:", userCityn);
-			// Call getDistance with a callback function to handle the result
-			getDistance(userCityn, selectedCityn, function(distance) {
-				updatePrice(distance);
-			});
-		});
-	});
-	
-	function getCities(c_stateId, callback) {
-		// Make AJAX request to retrieve cities
-		$.ajax({
-			url: 'http://localhost:5600/api/v1/states/cities/' + c_stateId,
-			type: 'GET',
-			success: function(data) {
-				// Clear existing options in cities dropdown
-				$('#create_cities').empty();
-				// Add new options for cities
-				$.each(data, function(index, city) {
-					$('#create_cities').append($('<option>', {
-						value: city.id,
-						text: city.name
-					}));
-				});
-				// Call the callback function to indicate that cities have been populated
-				callback();
-			},
-			error: function(xhr, status, error) {
-				// Handle error
-				console.error(error);
-			}
-		});
-	}
-
-		// Function to retrieve distance between two cities using Google Maps Distance Matrix API
-		function getDistance(origin, destination, callback) {
-			const apiUrl = `http://localhost/dist/${origin}-${destination}`;
-			$.ajax({
-				url: apiUrl,
-				type: 'GET',
-				success: function(data) {
-					const distance = data['distance'];
-					console.log(distance);
-					callback(distance);
-				},
-				error: function(xhr, status, error) {
-					console.error(error);
-					callback(null);
-				}
-			});
-		}
-
-		// Function to calculate price based on distance
-		function calculatePrice(distance) {
-			if (distance < 100) {
-				return 15;
-			} else if (distance < 250) {
-				return 20;
-			} else if (distance < 500) {
-				return 30;
-			} else if (distance < 650) {
-				return 35;
-			} else if (distance < 850) {
-				return 40;
-			} else {
-				return 45;
-			}
-		}
-
-		// Initialize a variable to store the initial price
-		var initialPrice = parseFloat($('.price').text());
-		// Function to update price element
-		function updatePrice(distance) {
-			const priceElement = $('.price');
-			const costElement = $('#parcel_cost');
-			var selectedValue = $('#parcel_type').val();
-			if (distance !== null) {
-				const price = calculatePrice(distance);
-				priceElement.text(price + ' MAD');
-				costElement.val(price);
-				initialPrice = price
-				if (selectedValue === "express") {
-					// Calculate the price only the first time express is selected
-					var expressPrice = initialPrice * 1.75;
-					priceElement.text(expressPrice + ' MAD');
-					costElement.val(expressPrice);
-				} else if (selectedValue === "standard") {
-					// Set the price back to the initial value for standard
-					priceElement.text(initialPrice + ' MAD');
-					costElement.val(initialPrice);
-				}
-
-			} else {
-				priceElement.text('Error occurred while calculating price.');
-			}
-		}
-
-		// print the selected city in the console.log
-		$('#create_cities').change(function() {
-			var userCity = $('.user_cit').text();
-			var selectedCity = $(this).find(":selected").text();
-			console.log("Selected City:", selectedCity);
-			console.log("User's City:", userCity);
-			// Call getDistance with a callback function to handle the result
-			getDistance(userCity, selectedCity, function(distance) {
-				updatePrice(distance);
-			});
-		});
-
-
-		var alreadySelectedValue = $('#parcel_type').val();
-
-		// Add event listener for change event on the parcel_type select element
-		$('#parcel_type').change(function() {
-			// Get the value of the selected option
-			var selectedValue = $(this).val();
-			const priceElement = $('.price');
-			const costElement = $('#parcel_cost');
-		
-			// Check the selected value
-			if (selectedValue === "express") {
-				// Calculate the price only the first time express is selected
-				if (alreadySelectedValue === "express"){
-					priceElement.text(initialPrice + ' MAD');
-					costElement.val(initialPrice);
-				}
-				else {
-					var expressPrice = initialPrice * 1.75;
-					priceElement.text(expressPrice + ' MAD');
-					costElement.val(expressPrice);
-				}
-
-			} else if (selectedValue === "standard") {
-				// Set the price back to the initial value for standard
-				if (alreadySelectedValue === "standard"){
-					priceElement.text(initialPrice + ' MAD');
-					costElement.val(initialPrice);
-				}
-				else {
-					var expressPrice = initialPrice / 1.75;
-					priceElement.text(expressPrice + ' MAD');
-					costElement.val(expressPrice);
-				}
-			}
-		});
     });
+
 
     contact.addEventListener('click', function () {
       // Clear content in profile_panel
@@ -323,8 +143,15 @@ document.addEventListener('DOMContentLoaded', function () {
       history_panel.style.display = 'none';
       delivery_panel.style.display = 'none';
       contactus_panel.style.display = 'flex';
+	  panelContent.textContent ="2"
     });
+	  if (panelContent === "2"){
+		console.log(panelContent)
+			create.click();
+			}
+		
   });
+
 
 //  print function
 

@@ -1,10 +1,12 @@
 {% extends "layout.html" %}
 {% block css %}
 <link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet" type="text/css">
+
 {% endblock css %}
 
 {% block content %}
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='scripts/home.js') }}" type="text/js">
     <section class="slider" id="slider active-link">
         <div class="over_slide">
             <div class="over_info">
@@ -20,34 +22,38 @@
         <div class="s1p2">
             <h6>ABOUT US</h6>
             <h1>Quick Transport and Logistics Solutions</h1>
-            <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+            <p>ShipIt is your trusted partner for all your local delivery needs. Our mission is to provide fast, efficient, and reliable delivery services to businesses and individuals alike.</p>
             <div class="p2a1">
                 <div class="a1b1">
                     <div class="p2a1_png a1b1_png"></div>
-                    <h5>Global Coverage</h5>
-                    <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
+                    <h5>Wide Coverage Area</h5>
+                    <i class="ri-global-fill"></i>
+                    <p>With ShipIt, you can reach customers across the city. Our extensive coverage area ensures that your packages are delivered promptly to their destinations.</p>
                 </div>
                 <div class="a1b2">
                     <div class="p2a1_png a1b2_png"></div>
-                    <h5>Global Coverage</h5>
-                    <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
+                    <h5>Flexible Delivery Options</h5>
+                    <i class="ri-shake-hands-fill"></i>
+                    <p>We understand that every delivery is unique. That's why we offer flexible delivery options to suit your specific needs. Whether it's same-day delivery or scheduled pickups, we've got you covered.</p>
                 </div>
             </div>
         </div>
     </section>
     <section class="achivement" id="achivement active-link">
-        <div class="over_slide">
+        <div class="services">
             <h1>Some Facts</h1>
             <div class="Shippement" id="Shippement">
                 <h4>Complete Shippements</h4>
-                <div class="achivement_shippement">
-
+                <div class="achivement_shippement" id="shipmentCount">
+                    <span id="totalShipments">{{ total_shipments }}</span>
+                    <h3>Shippements</h3>
                 </div>
             </div>
             <div class="Clients" id="clients">
                 <h4>Our clients</h4>
-                <div class="achivement_clients">
-
+                <div class="achivement_clients" id="clientsCount">
+                    <span id="numClients">{{ total_clients }}</span>
+                    <h3>Clients</h3>
                 </div>
             </div>
         </div>
@@ -58,22 +64,23 @@
         <div class="services">
             <div class="stand_ship">
                 <h5>Standard Shipping</h5>
-                <img src="../static/img/same-day.jpg" width=450 alt="same-day">
+                <!-- <img src="../static/img/same-day.jpg" width=450 alt="same-day"> -->
+                <a href="{{ url_for('service') }}">Learn More</a>
                 <P>Our standard shipping service is perfect for those who prioritize cost-effectiveness and are flexible with delivery times. With ShipIt's standard shipping, your packages are handled with care and delivered efficiently to their destination.</P>
-                <a href="#learn-more">Learn More</a>
+                
             </div>
             <div class="express_delivery">
                 <h5>Express Delivery</h5>
-                <img src="../static/img/same-day.jpg" width=450 alt="same-day">
+                <!-- <img src="../static/img/same-day.jpg" width=450 alt="same-day"> -->
+                <a href="{{ url_for('service') }}">Learn More</a>
                 <p>Need your package delivered quickly? Our express delivery service ensures that your items reach their destination in the shortest possible time. Whether it's across town or across the country, ShipIt's express delivery gets it there fast and reliably.</p>
-                <a href="#learn-more">Learn More</a>
+
             </div>
             <div class="same_day_ship">
                 <h5>Same Day Delivery</h5>
-                <img src="../static/img/same-day.jpg" width=450 alt="same-day">
+                <!-- <img src="../static/img/same-day.jpg" width=450 alt="same-day"> -->
+                <a href="{{ url_for('service') }}">Learn More</a>
                 <p>Urgency is our specialty! ShipIt's same-day delivery service guarantees lightning-fast delivery for those time-sensitive shipments. Whether it's a last-minute gift or an urgent business document, we'll ensure it gets there on time, every time.</p>
-                <a href="#learn-more">Learn More</a>
             </div>
-        </div>
     </section>
 {% endblock %}

@@ -11,7 +11,7 @@ from flask_login import login_user, logout_user, current_user
 def login():
     # Login route
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('account'))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -19,7 +19,7 @@ def login():
         user = storage.user_by_email(form.email.data)
         if user and bycpt.check_password_hash(user.user_password, form.password.data):
             login_user(user)
-            return render_template("home.html")
+            return redirect(url_for('account'))
 
         return render_template("login.html", form=form)
 

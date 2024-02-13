@@ -203,6 +203,10 @@
 			<div class="contact_text">feel free to contact us any time, we will get back to you as soon as we can</div>
 			<form method="post">
 				{{ contactus.hidden_tag() }}
+				{{ contactus.email(placeholder="Your email", class="email") }} <!-- Add email input field -->
+         		{% if contactus.email.errors %} <!-- Display error message for email field -->
+                	<div class="error">{{ contactus.email.errors[0] }}</div>
+            	{% endif %}
 				{{contactus.message(placeholder="Please leave a message", class="message")}}
 				{% if contactus.message.errors %}
 				<div class="error"> {{contactus.message.errors[0] }} </div>

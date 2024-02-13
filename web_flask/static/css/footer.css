@@ -14,7 +14,7 @@ footer {
 	gap: 24px;
 }
 .container-footer{
-	justify-content: space-between;
+	justify-content: space-around;
 	flex-direction: row
 }
 
@@ -24,6 +24,8 @@ justify-content: center;}
 .footer-brand {
     display: flex;
 }
+
+
 
 .footer-list-title{
 	margin-block-end: 16px;
@@ -56,6 +58,7 @@ justify-content: center;}
 .footer-nav {
     display: flex;
     flex-direction: column;
+
 }
 
 @media (max-width: 900px) {

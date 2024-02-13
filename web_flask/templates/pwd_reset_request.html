@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block css %}
-<!-- <link href="{{ url_for('static', filename='css/register.css') }}" rel="stylesheet" type="text/css"> -->
+<link href="{{ url_for('static', filename='css/reset_token.css') }}" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
@@ -15,16 +15,16 @@
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Reset</legend>
-                <div class="form-group">
-                    {{form.email(placeholder="Enter your email")}}
-					{% if form.email.errors %}
-						<div class="error"> {{ form.email.errors[0] }} </div>
-					{% endif %}
+                <div class="input-button-container"> <!-- Added container -->
+                    <div class="form-group">
+                        {{form.email(placeholder="Enter your email")}}
+                        {% if form.email.errors %}
+                            <div class="error"> {{ form.email.errors[0] }} </div>
+                        {% endif %}
+                    </div>
+                    <input type="submit" value="Reset" class="submit_b">
                 </div>
             </fieldset>
-            <div class="form-group">
-                <input type="submit" value="Reset" class="submit_b">
-            </div>
         </form>
     </div>
 

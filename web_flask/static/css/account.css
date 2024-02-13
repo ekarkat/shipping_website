@@ -1,5 +1,5 @@
 .container {
-	background-image: url('/static/img/Loading_workman_carrying_boxes.jpg');
+	/* background-image: url('/static/img/Loading_workman_carrying_boxes.jpg'); */
 	filter: opacity(1);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -74,3 +74,4 @@ div .people {
 .history_panel {
 	display: none;
 }
+

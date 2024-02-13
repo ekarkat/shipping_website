@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 """Account rout"""
-from flask import render_template, url_for, request, redirect
-from web_flask import app
+from flask import render_template, url_for, flash, request, redirect
+from web_flask import app, mail
 from flask_login import login_user, login_required, current_user
 from web_flask.forms import CreateParcel, UserProfile, ContactUs
 import models
+
+from flask_cors import CORS
+from flask_mail import Message
+
 
 
 @app.route("/account/", methods=["GET", "POST"])
@@ -36,6 +40,18 @@ def account():
 
     if contactus.validate_on_submit():
         # if user submit in edit profile
+        import os
+        recipient = [os.environ.get('EMAIL_USER')]
+        sender = contactus.email.data
+        msg = Message('Contact us',
+                      sender=sender,
+                      recipients=recipient)
+        msg.body = f"""message from : {sender}
+content: 
+{contactus.message.data}
+"""
+        mail.send(msg)  # assuming you have instantiated the Mail object as 'mail'
+        flash('Your message has been sent!', 'success')
         print(contactus.message.data)
         return redirect(url_for('account'))
 

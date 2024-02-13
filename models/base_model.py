@@ -70,6 +70,9 @@ class BaseModel():
 
     def update(self, **kwargs):
         # update an object
+        if "updated_at" not in kwargs:
+            self.updated_at = BaseModel.__dato(BaseModel.t_f)
+
         for key, value in kwargs.items():
             if key not in ["__class__", "updated_at", "created_at"]:
                 setattr(self, key, value)

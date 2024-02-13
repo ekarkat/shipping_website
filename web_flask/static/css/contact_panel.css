@@ -1,0 +1,53 @@
+
+
+.contactus_panel {
+	display: none;
+	justify-content: center;
+}
+
+div.contact_cont {
+	width: 40rem;
+	border: none;
+}
+div.contactus_ph {
+	font-size: 4rem;
+	/* font-family: "Fira Sans", sans-serif; */
+	font-weight: bold;
+	border: none;
+	margin: 1rem 0 0 0;
+}
+
+div.contact_text {
+	border: none;
+	margin: 2rem 0;
+}
+
+.contact_cont form {
+	display: flex;
+	flex-direction: column;
+}
+
+.contact_cont input {
+	height: 10rem;
+}
+
+textarea {
+	width: 100%;
+	height: 10rem;
+}
+
+input.btncontactus {
+	border: solid rgb(215,68,59);
+	height: 3rem;
+	margin: 25px 0 0px 0rem;
+	/* float: right; */
+	padding: 5px 18px;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 20px;
+	cursor: pointer;
+	width: 30vh;
+	background-color: rgb(215,68,59);
+	color: white;
+	border: 2px solid rgb(215,68,59);
+}

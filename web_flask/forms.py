@@ -80,6 +80,7 @@ class UserProfile(FlaskForm):
             raise ValidationError("Email already exist")
 
 class ContactUs(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
     message = TextAreaField('Message', validators=[DataRequired(), Length(min=3, max=1024)])
     submit = SubmitField('Send email')
 

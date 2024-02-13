@@ -16,7 +16,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         from models import storage
-        user = storage.user_eamil(form.email.data)
+        user = storage.user_by_email(form.email.data)
         if user and bycpt.check_password_hash(user.user_password, form.password.data):
             login_user(user)
             return redirect(url_for('account'))

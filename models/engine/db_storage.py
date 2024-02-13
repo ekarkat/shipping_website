@@ -53,7 +53,7 @@ class DBStorage():
             objs_dic[key] = obj
         return (objs_dic)
 
-    def user_eamil(self, email):
+    def user_by_email(self, email):
         """Returns a user based on email"""
         result = self.__session.query(User).filter_by(user_email=email).all()
         if len(result) == 0:

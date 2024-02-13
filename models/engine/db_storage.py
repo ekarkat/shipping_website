@@ -3,6 +3,7 @@
 
 from models.base_model import BaseModel, Base
 from models.user import User
+from models.agent import Agent
 from models.parcel import Parcel
 from models.city import City
 from models.state import State
@@ -62,6 +63,20 @@ class DBStorage():
     def user_id(self, id):
         """Returns a user based on id"""
         result = self.__session.query(User).filter_by(id=id).all()
+        if len(result) == 0:
+            return None
+        return (result[0])
+
+    def agent_id(self, id):
+        """Returns a user based on id"""
+        result = self.__session.query(Agent).filter_by(id=id).all()
+        if len(result) == 0:
+            return None
+        return (result[0])
+
+    def agent_eamil(self, email):
+        """Returns a user based on email"""
+        result = self.__session.query(Agent).filter_by(agent_email=email).all()
         if len(result) == 0:
             return None
         return (result[0])

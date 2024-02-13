@@ -84,3 +84,47 @@ class UserProfile(FlaskForm):
 class ContactUs(FlaskForm):
     message = TextAreaField('Message', validators=[DataRequired(), Length(min=3, max=1024)])
     submit = SubmitField('Send email')
+
+
+# agent forms agent login and other forms
+
+class AgentLogin(FlaskForm):
+    # Login form class
+    email = StringField('Email', validators=[DataRequired(), Email()])  # Correct function name
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
+    rememberme = BooleanField('Remember me')
+    submit = SubmitField('Log in')
+
+    def validate_email(self, email):
+        from models import storage
+        agent = storage.agent_eamil(email.data)
+        if not agent:
+            raise ValidationError("Email doesn't exist")
+        
+    # def validate_password(form, password):
+    #     from models import storage
+    #     agent = storage.agent_eamil(form.email.data)
+    #     if agent:
+    #         passw = agent.agent_password
+    #         if not bycpt.check_password_hash(agent.user_password, password.data):
+    #             raise ValidationError('Wrong password')
+
+
+class PickUp(FlaskForm):
+    # Login form class
+    tracking_number = StringField('Tracking Number', validators=[DataRequired(), Length(min=10)])  # Correct function name
+    submit = SubmitField('Submit')
+
+    def validate_tracking_number(self, tracking_number):
+        from models import storage
+        parcel = storage.parcel_track(tracking_number.data)
+        if not parcel:
+            raise ValidationError("Tracking number doessn't exist")
+
+    # def validate_password(form, password):
+    #     from models import storage
+    #     agent = storage.agent_eamil(form.email.data)
+    #     if agent:
+    #         passw = agent.agent_password
+    #         if not bycpt.check_password_hash(agent.user_password, password.data):
+    #             raise ValidationError('Wrong password')

@@ -44,7 +44,8 @@ class User(BaseModel, Base, UserMixin):
             "from_city" : self.user_city,
             "parcel_user_id" : self.id,
             "parcel_tracking_number": track_num,
-            "parcel_status": "Ready for Pickup"
+            "parcel_status": "Ready for Pickup",
+			"parcel_history": "Ready for Pickup"
             }
         details ={**user_details, **kwargs}
         parcel = Parcel(**details)

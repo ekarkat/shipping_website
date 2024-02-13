@@ -13,11 +13,12 @@
 {% endblock css %}
 
 {% block content %}
+<div id="cpanel" style="display: none;">{{panel}}</div>
 <div class="user_panel">
 	<div class="vx">{{current_user.id}}</div>
 	<div class="side_panel">
 		<div class="people">User profile</div>
-		<div class="create">Create a Parcel</div>
+		<div class="create">Pick up a Parcel</div>
 		<div class="delivery">On delivery</div>
 		<div class="history">History</div>
 		<div class="contact">Contact us</div>
@@ -30,12 +31,12 @@
 			<div class="info1">
 				<div class="info1part1">
 					{{profile_form.full_name.label}}
-					{{ profile_form.full_name(placeholder=current_user.user_full_name, value=current_user.user_full_name) }}
+					{{ profile_form.full_name(placeholder=current_user.agent_full_name, value=current_user.agent_full_name) }}
 					{% if profile_form.full_name.errors %}
 						<div class="error"> {{profile_form.full_name.errors[0] }} </div>
 					{% endif %}
 					{{profile_form.birth_date.label}}
-					{{profile_form.birth_date(value=current_user.user_birth_date, onfocus="(this.type='date')", onblur="(this.type='text')")}}
+					{{profile_form.birth_date(value=current_user.agent_birth_date, onfocus="(this.type='date')", onblur="(this.type='text')")}}
 					{% if profile_form.birth_date.errors %}
 						<div class="error"> {{profile_form.birth_date.errors[0] }} </div>
 					{% endif %}
@@ -43,12 +44,12 @@
 
 				<div class="info1part1">
 					{{profile_form.email.label}}
-					{{profile_form.email(placeholder=current_user.user_email, value=current_user.user_email)}}
+					{{profile_form.email(placeholder=current_user.agent_email, value=current_user.agent_email)}}
 					{% if profile_form.email.errors %}
 						<div class="error"> {{profile_form.email.errors[0] }} </div>
 					{% endif %}
 					{{profile_form.phone.label}}
-					{{profile_form.phone(placeholder=current_user.user_phone_number, value=current_user.user_phone_number)}}
+					{{profile_form.phone(placeholder=current_user.agent_phone_number, value=current_user.agent_phone_number)}}
 					{% if profile_form.phone.errors %}
 						<div class="error"> {{profile_form.phone.errors[0] }} </div>
 					{% endif %}
@@ -56,16 +57,16 @@
 			</div>
 			<div class="info2">
 				{{profile_form.address.label}}
-				{{profile_form.address(placeholder=current_user.user_address, value=current_user.user_address, class="address")}}
+				{{profile_form.address(placeholder=current_user.agent_address, value=current_user.agent_address, class="address")}}
 				{% if profile_form.address.errors %}
 					<div class="error"> {{profile_form.address.errors[0] }} </div>
 				{% endif %}
 
 				<label for="states">Region</label>
 				<select name="states" id="states" class="p_states">
-					<option value={{user_state.id}}>{{current_user.user_state}}</option>
+					<option value={{agent_state.id}}>{{current_user.agent_state}}</option>
 					{% for state in states|sort(attribute="name") %}
-						{% if state.name != current_user.user_state %}
+						{% if state.name != current_user.agent_state %}
 							<option value={{state.id}}>{{state.name}}</option>
 						{% endif %}
 					{% endfor %}
@@ -73,15 +74,14 @@
 
 				<label for="cities">City</label>
 				<select name="cities" id="cities" class="p_cities">
-					<option value={{user_city.id}}>{{current_user.user_city}}</option>
+					<option value={{agent_city.id}}>{{current_user.agent_city}}</option>
 				</select>
 				{{profile_form.postal_code.label}}
-				{{profile_form.postal_code(placeholder=current_user.user_postalcode, value=current_user.user_postalcode)}}
+				{{profile_form.postal_code(placeholder=current_user.agent_postalcode, value=current_user.agent_postalcode)}}
 				{% if profile_form.postal_code.errors %}
 					<div class="error"> {{profile_form.postal_code.errors[0] }} </div>
 				{% endif %}
 				<div class="update">
-					{{profile_form.submit(placeholder="Create", class="submit_b")}}
 				</div>
 			</div>
 
@@ -89,96 +89,20 @@
 	</div>
 	<div class="create_panel">
 		<form method="post">
-			{{ create_form.hidden_tag() }}
-			<div class="create_title">Enter the reciever details bellow</div>
-			<div class="cpp1">
-				<div class="cp_p1_p1">
-					{{create_form.to_name.label}}
-					{{create_form.to_name(placeholder="Reciever Full name")}}
-					{% if create_form.to_name.errors %}
-						<div class="error"> {{create_form.to_name.errors[0] }} </div>
-					{% endif %}
-				</div>
-
-				<div class="cp_p1_p1">
-					{{create_form.to_phone_number.label}}
-					{{create_form.to_phone_number(placeholder="Enter the reciever phone number")}}
-					{% if create_form.to_phone_number.errors %}
-						<div class="error"> {{create_form.to_phone_number.errors[0] }} </div>
-					{% endif %}
-				</div>
-			</div>
-
-			{{create_form.to_address.label}}
-			{{create_form.to_address(placeholder="Enter the reciever address", class="create_address")}}
-			{% if create_form.to_address.errors %}
-				<div class="error"> {{create_form.to_address.errors[0] }} </div>
+			{{ pickup_form.hidden_tag() }}
+			{{pickup_form.tracking_number.label}}
+			{{ pickup_form.tracking_number(placeholder="Enter the Tracking Number here") }}
+			{% if pickup_form.tracking_number.errors %}
+				<div class="error"> {{pickup_form.tracking_number.errors[0] }} </div>
 			{% endif %}
-
-			<div class="user_cit">{{current_user.user_city}}</div>
-
-			<div class="ccp2">
-				<div class="cp2_state">
-					<label for="create_states">Region</label>
-					<select name="states" id="create_states" class="create_states" required>
-						{% for state in states|sort(attribute="name") %}
-							<option value={{state.id}}>{{state.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-				<div class="cp2_state">
-					<label for="create_cities">City</label>
-					<select name="cities" id="create_cities" class="create_cities" required>
-					</select>
-				</div>
-			</div>
-
-			<div class="ccp2_p2">
-				<div class="cp2p1">
-					{{create_form.to_postalcode.label}}
-					{{create_form.to_postalcode(placeholder="Enter the reciever city")}}
-					{% if create_form.to_postalcode.errors %}
-						<div class="error"> {{create_form.to_postalcode.errors[0] }} </div>
-					{% endif %}
-				</div>
-				<div class="cp2p1">
-					{{create_form.parcel_weight.label}}
-					{{create_form.parcel_weight(placeholder="Enter the parcel weight")}}
-					{% if create_form.parcel_weight.errors %}
-						<div class="error"> {{create_form.parcel_weight.errors[0] }} </div>
-					{% endif %}
-				</div>
-			</div>
-			<div class="type_cost">
-				<div class="type_par">
-					<label for="parcel_type">Delivery type</label>
-					<select name="parcel_type" id="parcel_type" class="parcel_type" required>
-						<option value="standard">Standard</option>
-						<option value="express">Express</option>
-					</select>
-				</div>
-				<div class="cost">
-					<div>Delivery cost :</div>
-					<div class="price"> MAD</div>
-				</div>
-			</div>
-
-			{{create_form.parcel_comments.label}}
-			{{create_form.parcel_comments(placeholder="Comments")}}
-			{% if create_form.parcel_comments.errors %}
-				<div class="error"> {{create_form.parcel_comments.errors[0] }} </div>
-			{% endif %}
-
-			{{create_form.parcel_cost(style="display: none;")}}
-			{{create_form.submit(placeholder="Create", class="submit_b")}}
 		</form>
 	</div>
 	<div class="delivery_panel">
 		<table>
 			<div class="user">
-				<p class="user_name">{{current_user.user_full_name}}</p>
-				<p class="user_phone">{{current_user.user_phone_number}}</p>
-				<p class="user_city">{{current_user.user_city}}</p>
+				<p class="user_name">{{current_user.agent_full_name}}</p>
+				<p class="user_phone">{{current_user.agent_phone_number}}</p>
+				<p class="user_city">{{current_user.agent_city}}</p>
 			</div>
 			<tr>
 				<th>Tracking number</th>
@@ -274,5 +198,5 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="../static/scripts/account.js"></script>
+<script type="text/javascript" src="../static/scripts/agent_account.js"></script>
 {% endblock content %}

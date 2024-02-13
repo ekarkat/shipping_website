@@ -13,9 +13,11 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
 @login_manager.user_loader
-def load_user(user_id):
+def load_user(id):
     from models import storage
-    user = storage.user_id(user_id)
+    user = storage.user_id(id)
+    if not user:
+        user = storage.agent_id(id)
     return (user)
 
 @app.before_request
@@ -24,10 +26,11 @@ def refresh_session():
     storage.close()
     storage.reload()
 
-
 from web_flask.routes.register import register
 from web_flask.routes.commun import *
 from web_flask.routes.login import *
 from web_flask.routes.account import *
 from web_flask.routes.test import *
 from web_flask.routes.dist import *
+from web_flask.routes.agent_login import *
+from web_flask.routes.agent_account import *

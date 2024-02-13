@@ -35,7 +35,7 @@ def register():
 
         new_user = User(**imput)
         new_user.save()
-        return render_template("home.html")
+        return (url_for('login'))
 
     states = []
     for key, value in models.storage.all("State").items():

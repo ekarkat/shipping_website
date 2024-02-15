@@ -23,7 +23,7 @@ class Agent(BaseModel, Base, UserMixin):
     agent_parcels = relationship("Parcel", backref="agent_parcels")
 
     def pickup(self, tr):
-        # Method for user to create a parcel
+        # Method for agent to pick up
         from models import storage
         from models.parcel import Parcel
         parcel = storage.parcel_track(tr)
@@ -33,6 +33,22 @@ class Agent(BaseModel, Base, UserMixin):
             "parcel_agent_id" : self.id,
             "parcel_status" : "On delivery to " + parcel.to_city,
             "parcel_history" : parcel.parcel_status + ":" + "Picked up by shipping company:" + "On delivery to " + parcel.to_city + ":",
+            }
+        parcel.update(**agent_details)
+        parcel.save()
+        return(parcel)
+
+    def deliver(self, tr):
+        # Method for agent to deliver
+        from models import storage
+        from models.parcel import Parcel
+        parcel = storage.parcel_track(tr)
+        if not parcel:
+            return None
+        agent_details = {
+            "parcel_agent_id" : self.id,
+            "parcel_status" : "Recieved by " + parcel.to_name,
+            "parcel_history" : parcel.parcel_history + ":" + "Recieved by " + parcel.to_name,
             }
         parcel.update(**agent_details)
         parcel.save()

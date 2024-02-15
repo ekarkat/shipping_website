@@ -9,9 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const history = document.querySelector('.history');
     const delivery = document.querySelector('.delivery');
     const contact = document.querySelector('.contact');
-	var panelContent = document.getElementById("panel").innerHTML;
 
-	console.log(panelContent)
 
 	$(document).ready(function() {
 		var stateId = ''; // Initialize stateId variable
@@ -53,10 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let contactusPanelContent = contactus_panel.innerHTML;
 
 
-		createPanelContent = create_panel.innerHTML;
-		create_panel.innerHTML = '';
-		contactusPanelContent = contactus_panel.innerHTML;
-		contactus_panel.innerHTML = '';
+	createPanelContent = create_panel.innerHTML;
+	create_panel.innerHTML = '';
+	contactusPanelContent = contactus_panel.innerHTML;
+	contactus_panel.innerHTML = '';
 
 
     history.addEventListener('click', function () {
@@ -77,6 +75,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     people.addEventListener('click', function () {
 		// Clear content in create_panel
+
+
+
 		if (create_panel.innerHTML === '') {
 		}
 		else {
@@ -125,10 +126,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
 			});
 		}
+		$("#panel_number").val(1);
     });
   
     create.addEventListener('click', function () {
 	// Clear content in profile_panel
+
 	if (profile_panel.innerHTML === '') {
 	}
 	else {
@@ -301,10 +304,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
 			}
 		});
+		$("#panel_number").val(2);
     });
 
     contact.addEventListener('click', function () {
       // Clear content in profile_panel
+	  panel_3.value = "3";
       if (profile_panel.innerHTML === '') {
       }
       else {
@@ -324,6 +329,18 @@ document.addEventListener('DOMContentLoaded', function () {
       delivery_panel.style.display = 'none';
       contactus_panel.style.display = 'flex';
     });
+
+	var panel_num = document.querySelector('.panel_num_fix').textContent;
+
+	// Print the content to the console
+	console.log(panel_num);
+
+	if (panel_num === "1")
+		people.click()
+	if (panel_num === "2")
+		create.click()
+	if (panel_num === "3")
+		contact.click()
   });
 
 //  print function

@@ -10,7 +10,6 @@ from flask_cors import CORS
 from flask_mail import Message
 
 
-
 @app.route("/account/", methods=["GET", "POST"])
 @login_required
 def account():
@@ -40,6 +39,7 @@ def account():
 
     if contactus.validate_on_submit():
         # if user submit in edit profile
+        panel = "3"
         import os
         recipient = [os.environ.get('EMAIL_USER')]
         sender = contactus.email.data

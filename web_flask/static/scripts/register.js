@@ -5,7 +5,7 @@ $(document).ready(function() {
         var stateId = $(this).val();
         // Make AJAX request to retrieve cities
         $.ajax({
-            url: 'http://shippit.us/api/v1/states/cities/' + stateId,
+            url: 'http://localhost:5600/api/v1/states/cities/' + stateId,
             type: 'GET',
             success: function(data) {
                 // Clear existing options in cities dropdown

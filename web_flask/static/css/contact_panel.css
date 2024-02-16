@@ -6,7 +6,7 @@
 }
 
 div.contact_cont {
-	width: 40rem;
+	width: 41rem;
 	border: none;
 }
 div.contactus_ph {
@@ -28,7 +28,9 @@ div.contact_text {
 }
 
 .contact_cont input {
-	height: 10rem;
+	height: 1.5rem;
+	width: 40.9rem;
+	margin-bottom: 1rem;
 }
 
 textarea {

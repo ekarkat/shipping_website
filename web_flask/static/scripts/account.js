@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		function getCities(stateId) {
 			// Make AJAX request to retrieve cities
 			$.ajax({
-				url: 'http://localhost:5600/api/v1/states/cities/' + stateId,
+				url: 'http://shippit.us/api/v1/states/cities/' + stateId,
 				type: 'GET',
 				success: function(data) {
 					// Clear existing options in cities dropdown
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		function getCities(stateId) {
 			// Make AJAX request to retrieve cities
 			$.ajax({
-				url: 'http://localhost:5600/api/v1/states/cities/' + stateId,
+				url: 'http://shippit.us/api/v1/states/cities/' + stateId,
 				type: 'GET',
 				success: function(data) {
 					// Clear existing options in cities dropdown
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	function getCities(c_stateId, callback) {
 		// Make AJAX request to retrieve cities
 		$.ajax({
-			url: 'http://localhost:5600/api/v1/states/cities/' + c_stateId,
+			url: 'http://shippit.us/api/v1/states/cities/' + c_stateId,
 			type: 'GET',
 			success: function(data) {
 				// Clear existing options in cities dropdown
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Confirm deletion with the user (optional)
       if (confirm('Are you sure you want to delete this parcel?')) {
         // Send a simple request to your own backend
-        fetch(`http://localhost:5600/api/v1/parcels/${parcelId}`, {
+        fetch(`http://shippit.us/api/v1/parcels/${parcelId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

@@ -21,9 +21,9 @@ def login():
             login_user(user)
             return redirect(url_for('account'))
 
-        return render_template("login.html", form=form)
+        return render_template("login.html", form=form, title='Login')
 
-    return render_template("login.html", form=form)
+    return render_template("login.html", form=form, title='Login')
 
 
 @app.route("/logout")

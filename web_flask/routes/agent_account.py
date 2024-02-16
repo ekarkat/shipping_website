@@ -65,4 +65,4 @@ def agent_account():
     agent_city = models.storage.ses().query(models.city.City).filter_by(name=current_user.agent_city).first()
 
     return render_template("agent_account.html", profile_form=profile_form, pickup_form=pickup_form, parcels=parcels, contactus=contactus, states=states,
-                            agent_state=agent_state, agent_city=agent_city)
+                            agent_state=agent_state, agent_city=agent_city, title='Agent-account')

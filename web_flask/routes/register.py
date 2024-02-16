@@ -41,4 +41,4 @@ def register():
     for key, value in models.storage.all("State").items():
         states.append(value)
     
-    return render_template("register.html", form=form, states=states)
+    return render_template("register.html", form=form, states=states, title='Register')

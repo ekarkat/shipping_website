@@ -88,4 +88,4 @@ content:
     user_city = models.storage.ses().query(models.city.City).filter_by(name=current_user.user_city).first()
 
     return render_template("account.html", profile_form=profile_form, create_form=create_form, parcels=parcels, contactus=contactus, states=states,
-                            user_state=user_state, user_city=user_city)
+                            user_state=user_state, user_city=user_city, title='Account')

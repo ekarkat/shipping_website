@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Function to retrieve distance between two cities using Google Maps Distance Matrix API
 		function getDistance(origin, destination, callback) {
-			const apiUrl = `http://localhost/dist/${origin}-${destination}`;
+			const apiUrl = `http://localhost:5000/dist/${origin}-${destination}`;
 			$.ajax({
 				url: apiUrl,
 				type: 'GET',

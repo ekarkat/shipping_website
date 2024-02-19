@@ -145,11 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
       contactus_panel.style.display = 'flex';
 	  panelContent.textContent ="2"
     });
-	  if (panelContent === "2"){
-		console.log(panelContent)
-			create.click();
-			}
-		
+	create.click()
   });
 
 
@@ -233,3 +229,5 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+

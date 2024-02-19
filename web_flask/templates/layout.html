@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>index.html</title>
+<title>{{title}}</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
 <link href="{{ url_for('static', filename='css/body.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ url_for('static', filename='css/header.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" type="text/css">
+<link rel="icon" href="{{ url_for('static', filename='img/create-a-logo-for-a-local-shipping-website-called-shi.jpg') }}" type="image/png">
 
 <link href="{{ url_for('static', filename='css/root_style.css') }}" rel="stylesheet" type="text/css">
 
@@ -44,7 +45,12 @@ Use : inside the body add the :
 			<ul class="authentication__list">
 				{% if current_user.is_authenticated %}
 				<li class="login_item">
-					<a href="{{ url_for('account') }}">Account</a></li>
+					{% if current_user.__class__.__name__ == "User" %}
+						<a href="{{ url_for('account') }}">Account</a></li>
+					{% endif %}
+					{% if current_user.__class__.__name__ == "Agent" %}
+						<a href="{{ url_for('agent_account') }}">Account</a></li>
+					{% endif %}
 				<li class="login_item">
 					<a href="{{ url_for('logout') }}">Log out</a></li>
 			{% else %}

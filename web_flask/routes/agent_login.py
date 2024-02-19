@@ -22,9 +22,9 @@ def agent_login():
             login_user(agent)
             return redirect(url_for('agent_account'))
 
-        return render_template("agent_login.html", form=form)
+        return render_template("agent_login.html", form=form, title='Login')
 
-    return render_template("agent_login.html", form=form)
+    return render_template("agent_login.html", form=form, title='Login')
 
 # @app.route("/logout-agent")
 # def logout():

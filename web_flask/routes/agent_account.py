@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Account rout"""
-from flask import render_template, url_for, request, redirect
+from flask import render_template, url_for, request, redirect, flash
 from web_flask import app
 from flask_login import login_user, login_required, current_user
 from web_flask.forms import PickUp, UserProfile, ContactUs
@@ -15,14 +15,12 @@ def agent_account():
     profile_form = UserProfile()
     contactus = ContactUs()
 
-    panel = "1"
     if profile_form.validate_on_submit():
         # if user submit in edit profile
         pass
 
     if contactus.validate_on_submit():
         # if user submit in edit profile
-        print(contactus.message.data)
         return redirect(url_for('account'))
 
     if pickup_form.validate_on_submit():
@@ -31,7 +29,16 @@ def agent_account():
         # from models.city import City
         # state = models.storage.ses().query(State).filter_by(id=request.form['states']).first().name
         # city = models.storage.ses().query(City).filter_by(id=request.form['cities']).first().name
+        if request.form['delivery_type'] == "pick":
+            current_user.pickup(pickup_form.tracking_number.data)
 
+        if request.form['delivery_type'] == "deliver":
+            if models.storage.parcel_track(pickup_form.tracking_number.data) in current_user.agent_parcels:
+                current_user.deliver(pickup_form.tracking_number.data)
+                flash('Form submitted successfully!', 'success')
+
+            else:
+                print("False")
         # parcel = {
         #     "to_name" : create_form.to_name.data,
         #     "to_phone_number" : create_form.to_phone_number.data,
@@ -46,7 +53,7 @@ def agent_account():
         # }
         # # print(parcel)
         # current_user.create_parcel(**parcel)
-        panel = "2"
+        pass
 
     # parcels to render in 
     parcels = current_user.agent_parcels
@@ -58,4 +65,4 @@ def agent_account():
     agent_city = models.storage.ses().query(models.city.City).filter_by(name=current_user.agent_city).first()
 
     return render_template("agent_account.html", profile_form=profile_form, pickup_form=pickup_form, parcels=parcels, contactus=contactus, states=states,
-                            agent_state=agent_state, agent_city=agent_city, panel=panel)
+                            agent_state=agent_state, agent_city=agent_city, title='Agent-account')

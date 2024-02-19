@@ -40,14 +40,14 @@ ul {
 
 .logo {
 	margin-right: 5%;
-	margin-left: 0rem;
-	/* background-image: url('/static/img/logo.png'); */
+	margin-left: rem;
+	background-image:url('/static/img/ShipIt_logo.png');
 	background-repeat: no-repeat;
-	background-position: left;
+	background-position: 10%;
 	background-size: 4.2rem;
 	float: left;
-	width: 10rem;
-	height: 70px;
+	width: 11rem;
+	height: 80px;
 	cursor: pointer;
 	background-color: rgb(215,68,59);
 	transition: background-color;
@@ -83,15 +83,19 @@ ul {
 }
 
 .logo a {
-	display: inline-block;
-	box-sizing: border-box;
-	margin-top: 12px;
-	margin-left: 25px;
-	text-align: center;
-	font-size: 32px;
-	font-family: "Roboto",sans-serif;
-	color: white;
+    display: grid; /* Use CSS grid */
+    grid-template-columns: auto auto; /* Two columns, one for image, one for text */
+    align-items: center; /* Center items vertically */
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-left: 75px;
+    text-align: center;
+    font-size: 32px;
+    font-family: "Roboto", sans-serif;
+    color: white;
 }
+
+
 
 .nav__close, .nav__toggle{
 	position: absolute;

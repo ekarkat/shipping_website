@@ -8,7 +8,7 @@
 <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ url_for('static', filename='css/header.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" type="text/css">
-<link rel="icon" href="{{ url_for('static', filename='img/create-a-logo-for-a-local-shipping-website-called-shi.jpg') }}" type="image/png">
+<link rel="icon" href="{{ url_for('static', filename='img/ShipIt_logo.png') }}" type="image/png">
 
 <link href="{{ url_for('static', filename='css/root_style.css') }}" rel="stylesheet" type="text/css">
 
@@ -28,7 +28,11 @@ Use : inside the body add the :
 <body>
 	<header class="header" id="header">
 		<nav class="nav_container">
-		<div class="logo"><a href="{{ url_for('home') }}">ShipIt</a></div>
+		<div class="logo">
+			<a href="{{ url_for('home') }}">
+				ShipIt
+			</a>
+		</div>
 		<div class="panel" id="panel">
 			<ul class="nav__list">
 				<li class="nav_item">
@@ -86,7 +90,7 @@ Use : inside the body add the :
 			<div class="container-footer">
 				<div class="footer-brand">
 					<a href="/" class="logo_image">
-						<img src="../static/img/create-a-logo-for-a-local-shipping-website-called-shi.jpg" width="150" height="150" alt="ShipIt">
+						<img src="../static/img/ShipIt_logo.png" width="150" height="150" alt="ShipIt">
 					</a>
 				</div>
 

@@ -1,22 +1,20 @@
 #!/usr/bin/bash
 """Database storage class"""
-
-from models.base_model import BaseModel, Base
+import os
+from sys import argv
 from models.user import User
-from models.agent import Agent
-from models.parcel import Parcel
-
-from sqlalchemy import create_engine, func
-
 from models.city import City
+from models.agent import Agent
 from models.state import State
+from dotenv import load_dotenv
+from models.parcel import Parcel
+from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
-from sqlalchemy.orm import Session
-from dotenv import load_dotenv
-import os
-from sys import argv
+from sqlalchemy import create_engine, func
+from models.base_model import BaseModel, Base
+
 
 class DBStorage():
     # Database storage class

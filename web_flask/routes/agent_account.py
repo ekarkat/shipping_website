@@ -7,7 +7,7 @@ from web_flask.forms import PickUp, UserProfile, ContactUs
 import models
 
 
-@app.route("/agent-account/", methods=["GET", "POST"])
+@app.route("/agent-account/", methods=["GET", "POST"], subdomain="agent")
 @login_required
 def agent_account():
     # Account route

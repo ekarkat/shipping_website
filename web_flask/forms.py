@@ -89,7 +89,7 @@ class ContactUs(FlaskForm):
 # agent forms agent login and other forms
 
 class AgentLogin(FlaskForm):
-    # Login form class
+    # Agent Login form class
     email = StringField('Email', validators=[DataRequired(), Email()])  # Correct function name
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
     rememberme = BooleanField('Remember me')
@@ -111,7 +111,7 @@ class AgentLogin(FlaskForm):
 
 
 class PickUp(FlaskForm):
-    # Login form class
+    # Pick up form class
     tracking_number = StringField('Tracking Number', validators=[DataRequired(), Length(min=10)])  # Correct function name
     submit = SubmitField('Submit')
 
@@ -129,6 +129,7 @@ class PickUp(FlaskForm):
     #         if not bycpt.check_password_hash(agent.user_password, password.data):
     #             raise ValidationError('Wrong password')
 class RequestResetForm(FlaskForm):
+    # Request reset password class
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Request Password Reset')
 
@@ -140,6 +141,7 @@ class RequestResetForm(FlaskForm):
             raise ValidationError("This account does not exist. You must register first")
 
 class RequestPasswordForm(FlaskForm):
+    # Reset password form
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
     confirm_password = PasswordField('Confirm password', validators=[DataRequired(), Length(min=6), EqualTo('password')])
     submit = SubmitField('Reset Password')

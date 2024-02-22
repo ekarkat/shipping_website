@@ -8,9 +8,8 @@ from api.v1.views import app_views
 from flask_cors import CORS
 
 
-app = Flask(__name__, subdomain_matching=True)
+app = Flask(__name__)
 CORS(app, origins='*')
-
 app.register_blueprint(app_views)
 
 

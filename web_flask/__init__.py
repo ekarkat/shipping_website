@@ -8,11 +8,10 @@ from flask_mail import Mail
 
 
 
-app = Flask(__name__, subdomain_matching=True)
+app = Flask(__name__)
 CORS(app, origins="*")
 
 app.config['SECRET_KEY'] = '6e8a95d08da92b8fb4158cc3ba66a6e5'
-app.config['SERVER_NAME'] = "shippit.us"
 bycpt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'

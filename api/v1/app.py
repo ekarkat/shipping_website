@@ -8,8 +8,9 @@ from api.v1.views import app_views
 from flask_cors import CORS
 
 
-app = Flask(__name__)
+app = Flask(__name__, subdomain_matching=False)
 CORS(app, origins='*')
+app.config['SERVER_NAME'] = "shippit.us"
 app.register_blueprint(app_views)
 
 

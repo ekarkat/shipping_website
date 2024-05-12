@@ -1,0 +1,83 @@
+
+# user stories and features
+- As a user I need to authenticate and have my account related to my gmail/... account easily if I want to.
+- As an api implemeter, I need to provide the users the ability to CRUD the tasks
+-  The tasks should have the label property to make it easier to sort them
+- the users have the possibility to create a task list in collaborations
+- the tasks should have the property of being sorted according to the priority specified by the user. to make it easier for the user (jot them in the four boxes table 
+            * important & urgent `appear first in the list`
+            * important but can be delayed `second in the list`
+            * not important but urgent `Third in the list`
+            * not important & not urgent `last in the list`)
+- the tasks should have a due date property to make the order of the tasks clearer
+
+- based on the property specified above the users can classify their tasks according to their preference
+
+- the tasks should have the property of adding list of comments. In the comment section displayed the property specified above should be displayed as well
+
+- The user class should have a history property to record the user loggings and CRUD tasks done at specified times
+
+
+# learning objectives
+
+## RESTful API:
+    - defining resources:
+    - Endpoint:
+    - Request Methods: GET, POST, PUT, DELETE
+    - response formats: JSON
+## Authentication and authorization
+    - OAUth authorization
+    - implement user authentication and authorization
+    - Secure API endpoints.
+## Database integration:
+    - MySQL database
+    - usage of NoSQL database (what the use of it the first place)
+## CRUD operations:
+    - CRUD operations management through API endpoints
+    - handle error
+## Handle error:
+    - provide appropriate error response to client for better API usability
+## Documentation:
+    - create a comprehensive documentation for each endpoint, request/response formats, authentication methods...
+## Pagination and Filtering?
+    - pagination to handle large dataset (how?)
+    - filtering and sorting based on tasks properties `labels, due time(ascending || descending), task owner(user), priority(either the suggested importance/urgency method || users order)`
+## Testing:
+    - implement the unittest at least once
+    - implement the integration tests for API endpoint to ensure reliability and robustness
+## additional learning objectives:
+    ## API rate limiting:
+        - learn how to implement a rate limiting to prevent abuse, limiting the number of request per user or IP address
+    ## Performance optimization:
+        - techniques like caching, indexing, query optimization for scalability
+    ## Security best practices:
+        - input validation
+        - SQL inhection prevention
+        - ...
+    ## Integration Testing with frontend Applications
+
+# Third service implementation
+## Authentication:
+    - AuthO to handle authentication and authorization
+## Cloud Storage:
+    - in case of tasks that needs to load files (Amazon S3, google cloud)
+## Email service:
+    - based on priority or if defined by the user an email notification of the list of the day or a specific task should be sent (SendGrid, Mailgun)
+## Push notification:
+    - FCM / OneSignal provide notification on web and android .. to keep user informed of the starting time of the time box fixed for a specified task for this we may need the next service
+## Task Scheduling:
+    - Celery / APScheduler: schedule and execute background tasks asynchronously. (have an idea on how to implement if we need to)
+
+
+# Technologies to use:
+## Pytest:
+    - Framework : easier to write simole and scalable unittest, integration tests and functional tests for API endpoints
+## swagger/OpenAPI:
+    -Specification for descibing and documenting Restfull APIs. Swagger/OpenAPI allows you to define API endpoints, request/response schemas, authentication methods, and other API details in a standardized format, making it easier for developers to understand and interact with your API.
+
+****
+
+## Redis:
+    - In-memory data stores for caching frequently accessed data and improving the performance of your API. cache database queries, session data, and other application data to reduce latency and improve scalability.
+## Docker:
+    - for containerization, simplifies the deployment process by ensuring consistent environments across different development, testing, and production environments.
